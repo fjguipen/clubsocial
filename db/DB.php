@@ -14,23 +14,20 @@ Class DB{
         this->$password='';
     }
     //Conecta y cierra con la base de datos
-    static string query($sentencia){
+    static function query($sentencia){
         //Abro Conexion
-        $mysqli = new mysqli($server, $user, $password, $dbName);
-        if (!$mysqli) die("No puede conectar a MySQL: " . mysql_error());
-
+        $conexion=mysqli_connect($server, $user, $password, $dbName);
         //ejecuto sentencia MariaDB
-        if(!$mysqli->$sentencia){
-            
-        }else{
-            $resultado=$mysqli->$sentencia;
-        
-        }
+        mysqli_query( $conexion,$sentencia);
         //Cierro Conexion
-        mysqli_close($mysqli);
+        mysqli_close($conexion);
 
         //Devuelvo resultado OBTENIDO de la SENTENCIA dada
         return $resultado;
     }
+        //Se usa SELF:: para llamar metodos estaticos en la misma clase
+        //self::query($sentencia);
+
+    
 }
 ?>

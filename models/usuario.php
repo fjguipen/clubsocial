@@ -28,8 +28,8 @@ Class Socio{
     static bool darDeAlta(){
         $insertado=false;
 
+        $sentemcia="";
 
-        
 
     }
 
