@@ -26,6 +26,28 @@ Class Reserva{
     static function getReserva($id){
 
     }
+
+    static function getReservas(){
+
+    }
+
+    static function getReservas($socio,$fecha,$minutos){
+
+    }
+
+    function confirmarReserva(){
+
+    }
+
+    function añadirPenalizacion(){
+        
+    }
+
+
+    
+    static function instalacionDisponible($instalacion,){
+
+    }
     
 }
 
