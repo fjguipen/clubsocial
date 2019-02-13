@@ -1,4 +1,5 @@
 <?
+require './db/BD.php';
 Class Socio{
     
     $id;
@@ -25,7 +26,11 @@ Class Socio{
         this->miembros=$miembros;
     }
     static bool darDeAlta(){
+        $insertado=false;
+
+
         
+
     }
 
 
