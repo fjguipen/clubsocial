@@ -40,15 +40,13 @@ Class Reserva{
     }
 
     function añadirPenalizacion(){
-        
-    }
-
-
-    
-    static function instalacionDisponible($instalacion,){
 
     }
-    
+
+    static function instalacionDisponible($instalacion){
+
+    }
+    //venga turbo venga
 }
 
 
