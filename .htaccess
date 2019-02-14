@@ -1,0 +1,11 @@
+# Con esta configuracón conseguimos que cualquier ruta introducida
+# que llegue hasta nuestro directorio raiz de la APP /reservas se rediriga
+# a reservas/index.php, para desde ahí controlar todo el contenido.
+
+<IfModule mod_rewrite.c>
+	RewriteEngine on
+	RewriteBase /clubsocial
+	RewriteCond %{REQUEST_FILENAME} !-f 
+	RewriteCond %{REQUEST_FILENAME} !-d
+	RewriteRule ^. index.php [QSA,L]
+</IfModule>
