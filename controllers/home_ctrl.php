@@ -22,7 +22,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 	$campoSocioMiembros;
 	//$campoSocioFoto; --> No se usa.
 
-
 	//Campos Reserva pista.
 	$campoReservaId;
 	$campoReservaSocio;
@@ -48,42 +47,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 	//Asignación de variables recogida de los campos del formulario de Reserva.
 	$idReserva = htmlspecialchars($_POST['id']);
 	$socio = htmlspecialchars($_POST['socio']);
-	$instalacion = htmlspecialchars($_POST['instalacion']);
+	$idInstalacion = htmlspecialchars($_POST['instalacion']);
 	$fechaReserva = htmlspecialchars($_POST['fecha']);
 	$horaReserva = htmlspecialchars($_POST['hora']);
 	$penalizacion = htmlspecialchars($_POST['penalizacion']);
 	$nuevoReservaChecked = isset($_POST['newReserva']); /*--> Comprobación de existencia de Reserva.*/
 
-	$actualSocio = new Socio($idSocio, $dni, $nombre, $apellidos, $email, $password, $cc, $telefono, $miembros);
-
-	//Comprobación de que el Socio esté registrado o no.
-	$esSocio = $actualSocio->esSocio();
-
-	if($nuevoSocioChecked) {
-		//Si el socio no existe.
-		if(!$esSocio) {
-			$reserva = new Reserva(Socio($idSocio), Socio($password), $instalacion, $fechaReserva, $horaReserva);
+	if($socio->getSocio($idSocio)) {
+		if($socio->getPassword($idSocio) == $password) {
+			$reserva = new Reserva(Socio, Instalacion::getInstalacion($idInstalacion), $fechaReserva, $horaReserva);
 			if($reserva->instalacionDisponible()) {
-				if($actualSocio->crearSocio() && $reserva->confirmarReserva()) {
-					echo "Socio y reserva creados correctamente.";
-				}
-			}else {
-				echo "Pista ocupada.";
-			}
-		}else {
-			echo "El socio ya existe.";
-		}
-	}else {
-		if($esSocio) {
-			$reserva = new Reserva(Socio($idSocio), Socio($password), $instalacion, $fechaReserva, $horaReserva);
-			if($reserva->instalacionDisponible() && $reserva->confirmarReserva()) {
 				echo "Reserva creada.";
 			}else {
 				echo "Pista ocupada.";
 			}
 		}else {
-			echo "El socio no existe.";
+			echo "La contraseña es incorrecta.";	
 		}
+	}else {
+		echo "El socio no existe.";
 	}
 }
 ?>
