@@ -53,19 +53,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 	$penalizacion = htmlspecialchars($_POST['penalizacion']);
 	$nuevoReservaChecked = isset($_POST['newReserva']); /*--> Comprobación de existencia de Reserva.*/
 
+	//Control de Reserva: 
+
+	//Comprobación de Socio & Llamada funcion getSocio del modelo usuario.php
 	if($socio->getSocio($idSocio)) {
+
+		//Comprobación de Contraseña de Socio para Realización de Reserva
+		//Llamada a funcion getPassword del modelo usuario.php
 		if($socio->getPassword($idSocio) == $password) {
+			//Creación de la Reserva:
 			$reserva = new Reserva(Socio, Instalacion::getInstalacion($idInstalacion), $fechaReserva, $horaReserva);
-			if($reserva->instalacionDisponible()) {
-				echo "Reserva creada.";
+			//Comprobación de Instalación Disponible Para Finalizar la Reserva
+			//Llamada a función instalacionDisponible del modelo reserva.php
+			if($reserva->instalacionDisponible()) { 
+				echo "Reserva creada.";		//Si Instalación Disponible es Correcta -> Reserva Creada
 			}else {
-				echo "Pista ocupada.";
+				echo "Pista ocupada.";		//Si no -> Pista Ocupada
 			}
 		}else {
-			echo "La contraseña es incorrecta.";	
+			echo "La contraseña es incorrecta.";	//Si la Contraseña no es Correcta -> Muestra Mensaje	
 		}
 	}else {
-		echo "El socio no existe.";
+		echo "El socio no existe."; //Si Comprobación de Socio es Incorrecta -> Socio no existe
 	}
 }
 ?>
