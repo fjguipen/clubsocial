@@ -12,9 +12,9 @@ class Administrador {
     }
 
     public function isAdmin() {
-        $db = new DB();
+        
         $sentencia = "SELECT * FROM administradores WHERE email='$this->email' AND password='$this->password'";
-        return $db->query($sentencia); 
+        DB::query($sentencia);
     }
 
 }
