@@ -24,13 +24,13 @@ Class Reserva{
     }
 
     static function getReserva($id){
-        $sentencia = "SELECT * FROM Reserva WHERE $id=$this->id";
+        $sentencia = "SELECT * FROM reservas WHERE $id=$this->id";
         return DB::query($sentencia);
     }
 
     static function getReservas(){
 
-        $sentencia="SELECT * FROM Reserva";
+        $sentencia="SELECT * FROM reservas";
         return DB::query($sentencia);
     }
 
@@ -41,16 +41,19 @@ Class Reserva{
     }
 
     function confirmarReserva(){
-        
+     $sentencia="INSERT INTO reservas(numero_socio,instala,fecha,minutos,penalizacion) VALUES(this->$socio,this->$instalacion,this->$fecha,this->$minutos,this->$penalizacion);
+     return DB::query($sentencia);
 
 
     }
 
     function añadirPenalizacion(){
 
+
     }
 
     function instalacionDisponible($instalacion){
+
 
     }
 }
