@@ -17,7 +17,7 @@ Class Instalacion{
         $sentencia="SELECT * FROM instalaciones
                         WHERE $id=$this->id;";
 
-        return $db ->query($sentemcia);
+        return $db ->query($sentencia);
     }
 }
 ?>
