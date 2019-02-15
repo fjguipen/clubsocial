@@ -8,10 +8,10 @@ Class DB{
 
     
     public DB{
-        this->$server='localhost';
-        this->$dbName='club_social_eusa';
-        this->$user='root';
-        this->$password='';
+        $this->server='localhost';
+        $this->dbName='club_social_eusa';
+        $this->user='root';
+        $this->password='';
     }
     //Conecta y cierra con la base de datos
     static function query($sentencia){
