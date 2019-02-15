@@ -7,7 +7,7 @@ Class DB{
     private $password;
 
     
-    function __constructor(){
+    function __construct(){
         $this->server='localhost';
         $this->dbName='club_social_eusa';
         $this->user='root';
