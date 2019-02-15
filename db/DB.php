@@ -1,10 +1,10 @@
 <? 
 
 Class DB{
-    $server;
-    $dbName;
-    $user;
-    $password;
+    private $server;
+    private $dbName;
+    private $user;
+    private $password;
 
     
     public DB{
