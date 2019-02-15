@@ -1,5 +1,4 @@
-<?php
-
+<?
 require './db/BD.php';
 
 class Administrador {
@@ -14,11 +13,10 @@ class Administrador {
 
     public function isAdmin() {
         $db = new DB();
-        $sentencia = "SELECT * FROM administradores WHERE email = '$this->email' AND password = '$this->password'";
+        $sentencia = "SELECT * FROM administradores WHERE email='$this->email' AND password='$this->password'";
         return $db->query($sentencia); 
     }
 
 }
-
 
 ?>

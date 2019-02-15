@@ -4,22 +4,22 @@ require './db/BD.php';
 
 Class Reserva{
 
-    $id;
-    $socio;
-    $instalacion;
-    $fecha;
-    $minutos;
-    $penalizacion;
+    private $id;
+    private $socio;
+    private $instalacion;
+    private $fecha;
+    private $minutos;
+    private $penalizacion;
 
 
-    public __construct($socio,$instalacion,$fecha,$minutos,$penalizacion=null,$id=null){
+    function __construct($socio,$instalacion,$fecha,$minutos,$penalizacion=null,$id=null){
         
-        this->socio=$socio;
-        this->instalacion=$instalacion;
-        this->fecha=$fecha;
-        this->minutos=$minutos;
-        this->penalizacion=$penalizacion;
-        this->id=$id;
+        $this->socio=$socio;
+        $this->instalacion=$instalacion;
+        $this->fecha=$fecha;
+        $this->minutos=$minutos;
+        $this->penalizacion=$penalizacion;
+        $this->id=$id;
 
     }
 
@@ -52,7 +52,7 @@ Class Reserva{
 
     }
 
-    static function instalacionDisponible($instalacion){
+    function instalacionDisponible($instalacion){
 
     }
     //venga turbo venga
