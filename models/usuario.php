@@ -2,16 +2,16 @@
 require './db/BD.php';
 Class Usuario{
     
-    $id;
-    $dni;
-    $nombre;
-    $apellidos;
-    $dir;
-    $email;
-    $password;
-    $cc;
-    $telefono;
-    $miembros;
+    private $id;
+    private $dni;
+    private $nombre;
+    private $apellidos;
+    private $dir;
+    private $email;
+    private $password;
+    private $cc;
+    private $telefono;
+    private $miembros;
 
     function __construct($id,$dni,$nombre,$apellidos,$dir,$email,$password,$cc,$telefono,$miembros){
         $this->id=$id;
