@@ -13,7 +13,7 @@ Class Reserva{
 
 
     function __construct($socio,$instalacion,$fecha,$minutos,$penalizacion=null,$id=null){
-        
+
         $this->socio=$socio;
         $this->instalacion=$instalacion;
         $this->fecha=$fecha;
@@ -25,22 +25,22 @@ Class Reserva{
 
     static function getReserva($id){
 
-        $sentencia='SELECT * FROM Reserva 
-            WHERE $id=$this->id';
+        $sentencia="SELECT * FROM Reserva 
+            WHERE $id=$this->id";
         
 
     }
 
     static function getReservas(){
-        $sentencia='SELECT * FROM Reserva';
+        $sentencia="SELECT * FROM Reserva";
 
     }
 
     static function getReservas($socio,$fecha,$minutos){
-        $sentencia='SELECT * FROM Reserva 
+        $sentencia="SELECT * FROM Reserva 
             WHERE $socio=$this->socio 
             AND $fecha=$this->fecha
-            AND $minutos=this->minutos';
+            AND $minutos=this->minutos";
 
     }
 
