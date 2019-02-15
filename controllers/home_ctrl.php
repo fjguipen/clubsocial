@@ -35,7 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 	$idSocio = htmlspecialchars($_POST['id']);
 	$dni = htmlspecialchars($_POST['dni']);
     $nombre = htmlspecialchars($_POST['nombre']);
-    $apellidos = htmlspecialchars($_POST['apellidos']);
+	$apellidos = htmlspecialchars($_POST['apellidos']);
+	$dir = htmlspecialchars($_POST['direccion']);
 	$email = htmlspecialchars($_POST['email']);
 	$password = htmlspecialchars($_POST['password']);
 	$cc = htmlspecialchars($_POST['cc']);
@@ -75,6 +76,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 		}
 	}else {
 		echo "El socio no existe."; //Si Comprobación de Socio es Incorrecta -> Socio no existe
+		$socio = new Socio($idSocio, $nombre, $apellidos, $dir, $email, $dni, $cc, $telefono, $miembros, $password);
+		$socio->darDeAlta($socio);
 	}
 }
 ?>
