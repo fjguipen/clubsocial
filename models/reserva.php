@@ -25,17 +25,24 @@ Class Reserva{
 
     static function getReserva($id){
         $sentencia = "SELECT * FROM Reserva WHERE $id=$this->id";
+        return DB::query($sentencia);
     }
 
     static function getReservas(){
+
         $sentencia="SELECT * FROM Reserva";
+        return DB::query($sentencia);
     }
 
     static function getReservasSocio($socio) {
+        
         $sentencia = "SELECT * FROM reservas WHERE $socio=$this->socio";
+        return DB::query($sentencia);
     }
 
     function confirmarReserva(){
+        
+
 
     }
 
