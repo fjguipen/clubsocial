@@ -27,25 +27,25 @@ Class Socio{
     }
     static function darDeAlta(){
         $insertado=false;
-
+        $db= new DB();
         $sentemcia="INSERT INTO socios(numero_socio,nombre,ape,dir,email,dni,cc,foto,tlf,miembros,password)
                     VALUES ($this->id,$this->nombre,$this->apellidos,$this->dir,$this->email,$this->dni,$this->cc,"",$this->telefono,$this->miembros,$this->password))";
         
-        //conectar y hacer query con la funcion de DB 
+       return $db ->query($sentemcia);
     }
     static function getSocio($id){
 
         $sentencia="SELECT * FROM socios
                         WHERE $id=$this->id;";
 
-        //conectar y hacer query con la funcion de DB 
+        return $db ->query($sentemcia);
     }
 
     static isValidPassword($id,$password){
 
-        $sentencia="SELECT PASSWORD FROM socios 
-                        WHERE $id=$this->id
-                        and $password=$this->";
+        $sentencia="SELECT PASSWORD FROM socios WHERE $id=$this->id and $password=$this->password;";
+
+        return $db ->query($sentemcia);
     }
 }
 
