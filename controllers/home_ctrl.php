@@ -63,8 +63,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 		//Si el socio no existe.
 		if(!$esSocio) {
 			$reserva = new Reserva(Socio($idSocio), Socio($password), $instalacion, $fechaReserva, $horaReserva);
-			if($reserva->pistaDisponible()) {
-				if($actualSocio->crearSocio() && $reserva->crearReserva()) {
+			if($reserva->instalacionDisponible()) {
+				if($actualSocio->crearSocio() && $reserva->confirmarReserva()) {
 					echo "Socio y reserva creados correctamente.";
 				}
 			}else {
@@ -76,7 +76,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 	}else {
 		if($esSocio) {
 			$reserva = new Reserva(Socio($idSocio), Socio($password), $instalacion, $fechaReserva, $horaReserva);
-			if($reserva->pistaDisponible() && $reserva->crearReserva()) {
+			if($reserva->instalacionDisponible() && $reserva->confirmarReserva()) {
 				echo "Reserva creada.";
 			}else {
 				echo "Pista ocupada.";
