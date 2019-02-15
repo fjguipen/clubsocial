@@ -39,9 +39,10 @@ Class Usuario{
         return $db ->query($sentencia);
     }
 
-    static function isValidPassword($id,$password){
+
+    static function getPassword($id){
         $db= new DB();
-        $sentencia="SELECT PASSWORD FROM socios WHERE $id=$this->id and $password=$this->password;";
+        $sentencia="SELECT PASSWORD FROM socios WHERE $id=$this->id";
 
         return $db ->query($sentencia);
     }

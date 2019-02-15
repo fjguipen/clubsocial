@@ -1,0 +1,6 @@
+<?
+ Class Estadisticas_ctrl{
+    
+
+ }
+?>
