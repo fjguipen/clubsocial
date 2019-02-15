@@ -1,6 +1,6 @@
 <?
 require './db/BD.php';
-Class Socio{
+Class Usuario{
     
     $id;
     $dni;
