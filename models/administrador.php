@@ -15,8 +15,8 @@ class Administrador {
     public function isAdmin() {
         
         $sentencia = "SELECT * FROM administradores WHERE email='$this->email' AND password='$this->password'";
-        echo "wakamole";
-        return DB::query($sentencia);
+        $result = DB::query($sentencia);
+        return $result;
     }
 
 }

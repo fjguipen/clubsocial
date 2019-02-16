@@ -1,4 +1,4 @@
-<? 
+<?php 
 
 class DB{
     private static $server = 'localhost';
@@ -23,4 +23,5 @@ class DB{
         //Se usa SELF:: para llamar metodos estaticos en la misma clase
         //self::query($sentencia);
 }
+
 ?>
