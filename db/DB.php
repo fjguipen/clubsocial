@@ -1,18 +1,11 @@
 <? 
 
 Class DB{
-    $server;
-    $dbName;
-    $user;
-    $password;
+    private $server = 'localhost';
+    private $dbName = 'club_social_eusa';
+    private $user = 'root';
+    private $password = '';
 
-    
-    public DB{
-        this->$server='localhost';
-        this->$dbName='club_social_eusa';
-        this->$user='root';
-        this->$password='';
-    }
     //Conecta y cierra con la base de datos
     static function query($sentencia){
         //Abro Conexion
@@ -27,7 +20,5 @@ Class DB{
     }
         //Se usa SELF:: para llamar metodos estaticos en la misma clase
         //self::query($sentencia);
-
-    
 }
 ?>
