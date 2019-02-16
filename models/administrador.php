@@ -1,5 +1,6 @@
-<?
-require './db/BD.php';
+<?php
+
+require('../db/DB.php');
 
 class Administrador {
     
@@ -14,7 +15,8 @@ class Administrador {
     public function isAdmin() {
         
         $sentencia = "SELECT * FROM administradores WHERE email='$this->email' AND password='$this->password'";
-        return DB::query($sentencia);
+        $result = DB::query($sentencia);
+        return $result;
     }
 
 }

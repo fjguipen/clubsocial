@@ -1,5 +1,5 @@
 <?php
- 
+ session_start();
 /*
  Control de ruta. Con este archivo controlamos qué contenido se muestra al cliente en funcion
  de la url.   ##########    Ver .htaccess
