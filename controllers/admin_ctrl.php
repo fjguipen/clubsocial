@@ -1,18 +1,21 @@
 <?php 
     session_start(); 
 
-    require('./models/administrador.php');
+    require('../models/administrador.php');
 
     if($_SERVER["REQUEST_METHOD"] === "POST"){
         $loggout = isset($_POST["loggout"]);
 
         if ($loggout){
+           
             $_SESSION["user"]="";
+
         } else {
-            $user = htmlspecialchars($_POST["username"]);
+
+            $email = htmlspecialchars($_POST["username"]);
             $password = htmlspecialchars($_POST["password"]);
 
-            $admin = new Administrador($ermail, $password);
+            $admin = new Administrador($email, $password);
             
             if($email != "" && $password != ""){          
                 logInAdmin($admin);
