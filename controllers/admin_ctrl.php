@@ -1,23 +1,29 @@
 <?php 
     session_start(); 
 
+    require('./models/administrador.php');
+
     if($_SERVER["REQUEST_METHOD"] === "POST"){
         $loggout = isset($_POST["loggout"]);
 
         if ($loggout){
             $_SESSION["user"]="";
-        }
+        } else {
+            $user = htmlspecialchars($_POST["username"]);
+            $password = htmlspecialchars($_POST["password"]);
 
-        $user = htmlspecialchars($_POST["username"]);
-        $password = htmlspecialchars($_POST["password"]);
-
-        if($user != "" && $password != ""){
-            //$token = logInAdmin();
-            //crearSersion($token);
-            $_SESSION["user"]=Array("username"=>$user,"token"=>$token);
+            $admin = new Administrador($ermail, $password);
             
-            header("Location: http://$_SERVER[HTTP_HOST]$_GET[location]");
+            if($email != "" && $password != ""){          
+                logInAdmin($admin);
+                header("Location: http://$_SERVER[HTTP_HOST]$_GET[location]");
+            }
+        }
+    }
 
+    function logInAdmin($admin){
+        if ($admin->isAdmin()){
+            $_SESSION["user"]=password_hash($email, PASSWORD_BCRYPT);
         }
     }
 ?>
