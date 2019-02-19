@@ -42,5 +42,7 @@ require './db/BD.php';
         return $numMax;
         }
     }   
+    
     }
+    include ("./views/estadisticas.php");
 ?>
