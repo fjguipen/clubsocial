@@ -40,6 +40,17 @@ if (isset($_SESSION["user"])){ ?>
             <div class="col-md-4"> Nº de Socio </div>
             <div class="col-md-4"> Nombre y Apellido </div>
             <div class="col-md-4"> Nº Total de Reservas Mensuales </div>
+            <?php 
+                require ('./models/reserva.php');
+                $reservas = reserva::getReservasSocio();
+                foreach($reservas as $reserva){?>
+                   
+                     <div class="col-md-2"> <?php $reserva->numero_socio?></div>
+                     <div class="col-md-2"> <?php $reserva->$socio(nombre,ape)?></div>
+                     <div class="col-md-2"> <?php $reserva->fecha?></div>
+
+                    
+                <?php } ?>
         </div>
     </div>
     </body>
