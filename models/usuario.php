@@ -43,6 +43,9 @@ class Usuario{
         return DB::query($sentencia);
     }
 
+    static function getSocios(){
+        return DB::query("SELECT * FROM socios");
+    }
 
     function getPassword(){
         
