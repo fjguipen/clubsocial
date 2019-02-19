@@ -46,7 +46,7 @@ if (isset($_SESSION["user"])){ ?>
                 foreach($reservas as $reserva){?>
                    
                      <div class="col-md-2"> <?php $reserva->numero_socio?></div>
-                     <div class="col-md-2"> <?php $reserva->$socio(nombre,ape)?></div>
+                     <div class="col-md-2"> <?php $reserva->socio->nombre." ".$reserva->socio->ape?></div>
                      <div class="col-md-2"> <?php $reserva->fecha?></div>
 
                     
