@@ -31,18 +31,17 @@ require './db/BD.php';
     private static function calculaRecomendacion($informaciones){
     
         $numMax=0;
+        $name;
         foreach( $informaciones as $informacion){
-            $numReservas=$informacion->$numReservas;
-            if($numReservas>$numMax){
+            $numReservas=$informacion["reservas"];
+            if($numReservas > $numMax){
                 $numMax=$numReservas;
+                $name=$informacion["nombre"];
             }
         }
 
-        
-        return $numMax;
-        }
-    }   
-    
+        return $name;
+        }  
     }
     include ("./views/estadisticas.php");
 ?>
