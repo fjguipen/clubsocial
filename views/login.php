@@ -28,7 +28,7 @@
             <input id="password" name="password" class="form-control" type="password" value="" required>
         </div>
         <div class="form-group">
-            <input type="submit" class="btn btn-primary" value="Entrar">    
+            <input type="submit" class="form-control" value="Entrar">    
         </div>
     </form>
 </div>
