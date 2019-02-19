@@ -26,24 +26,19 @@ if (isset($_SESSION["user"])){ ?>
             <div class="col-md-2"> Fecha </div>
             <div class="col-md-2"> Hora </div>
         </div>
-        <!--Planificación para el resto de filas tabla1-->
-        
-            <?php 
-                //Requerimiento del modelo de Reservas (PHP):
-                
-                $reservas = reserva::getReservas();
+            <?php               
+                $reservas = Reserva::getReservas();
                 //Recorrido y obtención de datos de las reservas del socio correspondiente:
                 foreach($reservas as $reserva){?>
-                    <!--Obtención de datos del socio correspondiente
-                     Nº Reserva | Nº Socio | Tipo de Instalación | Fecha | Hora -->
+                <!--Planificación para el resto de filas tabla1-->
                 <div class="row">   
+                    <!--Obtención de datos del socio correspondiente
+                    Nº Reserva | Nº Socio | Tipo de Instalación | Fecha | Hora -->
                      <div class="col-md-2"> <?php $reserva->num_reserva?></div>
                      <div class="col-md-2"> <?php $reserva->numero_socio?></div>
                      <div class="col-md-2"> <?php $reserva->id_instalacion?></div>
                      <div class="col-md-2"> <?php $reserva->fecha?></div>
                      <div class="col-md-2"> <?php $reserva->minutos?></div>
-
-                    
                 <?php } ?>
                 </div>
         <!--Planificación de filas para tabla 2-->
@@ -53,13 +48,13 @@ if (isset($_SESSION["user"])){ ?>
             <div class="col-md-4"> Nombre y Apellido </div>
             <div class="col-md-4"> Nº Total de Reservas Mensuales </div>
         </div>
-        <!--Planificación de resto de filas para tabla 2-->
-        
             <?php 
-                
-                $reservas = reserva::getReservasSocio();
+                $reservas = Reserva::getReservasSocio();
                 foreach($reservas as $reserva){?>
+                <!--Planificación de resto de filas para tabla 2-->
                 <div class="row">  
+                    <!--Obtención de datos del socio correspondiente
+                    Nº Socio | Nombre de Socio | Apellido de Socio | Nº total de Reservas Mensuales -->
                      <div class="col-md-2"> <?php $reserva->numero_socio?></div>
                      <div class="col-md-2"> <?php $reserva->socio->nombre." ".$reserva->socio->ape?></div>
                      <div class="col-md-2"> <?php $reserva->fecha?></div>
