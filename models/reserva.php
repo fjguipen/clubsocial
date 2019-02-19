@@ -47,9 +47,9 @@ Class Reserva{
 
     }
 
-    function añadirPenalizacion(){
-        
-
+    static function añadirPenalizacion($num_reserva){
+        $sentencia = "UPDATE reservas SET penalizacion = true WHERE num_reserva = $num_reserva"; // Sentencia para insertar la penalizacion en la reserva.
+        return DB::query($sentencia);
     }
 
     function instalacionDisponible(){
