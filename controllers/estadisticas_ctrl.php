@@ -8,15 +8,33 @@ require './db/BD.php';
     }
 
     static function generarEstadisticas($instalaciones){ 
-        //
+        private $informacion =new array();
        foreach($instalaciones as $instalacion){
-            //sacas id instalacion y lom mete dentro array
-            //sacas nombre instalacion y lommm mete array
-
-            $sentencia="SELECT COUNT(*) FROM reservas
-                        WHERE id=$instalacion;";
-           /*array*/ $db ->query($sentencia);
-
+                $informacion=$id;
+                $informacion=$nombre;               
+        
+                $sentencia="SELECT COUNT(*) FROM reservas
+                         WHERE id=$instalacion;";
+                $informacion= $numReservas ->query($sentencia);
+                
+       }        
+        return $informacion;
        }
+    static function calculaRecomendacion(){
+        
+        $instalaciones = new array();
+
+        $instalaciones= generarEstadisticas();
+        $numMax=0;
+        foreach( $instalacones as $numReservas){
+            if($numReservas>$numMax){
+                $numMax=$numReservas;
+            }
+        }
+
+        $instalaciones= $numMax;
+        return $instalaciones;
+        }
+    }   
     }
 ?>
