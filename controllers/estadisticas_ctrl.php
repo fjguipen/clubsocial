@@ -1,4 +1,4 @@
-<?
+<?php
 require './db/BD.php';
  Class Estadisticas_ctrl{
     private $reservas;
@@ -43,4 +43,5 @@ require './db/BD.php';
         return $name;
         }  
     }
+    include ("./views/estadisticas.php");
 ?>

@@ -20,7 +20,7 @@
 <div class="container">
         <!-- FORMULARIO -->
         <br><br><br><br><br>
-        <form>
+        <form action="./controllers/home_ctrl.php" method="POST">
         <div class="row">
         <div class="form-group">
             <label for="dni">DNI</label>  
