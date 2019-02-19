@@ -66,6 +66,10 @@
                 <input type="date" id="fecha" name="fecha">
             </div>
             <div class="form-group">
+                <label for="hora">Hora de la reserva</label>
+                <input type="time" id="hora" name="hora">
+            </div>
+            <div class="form-group">
             <label for="tipo">Instalación</label>
             <select id="tipo" name="tipo" required>
                 <option selected disabled>-- seleccione una opción --</option>
@@ -76,9 +80,9 @@
             </select>
             </div>        
         </div> 
-        <div class="centro1">
-        <button type="submit">REGISTRAR</button>
-      </div>
+        <div class="form-group">
+            <input type="submit" class="form-control" value="Entrar">    
+        </div>
         </form>
 </div>
 </body>
