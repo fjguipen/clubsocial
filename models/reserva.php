@@ -14,8 +14,8 @@ Class Reserva{
 
     function __construct($socio,$instalacion,$fecha,$minutos,$penalizacion=null,$id=null){
 
-        $this->socio=$socio;
-        $this->instalacion=$instalacion;
+        $this->socio=$socio; // Objeto socio
+        $this->instalacion=$instalacion; // Objeto instalacion
         $this->fecha=$fecha;
         $this->minutos=$minutos;
         $this->penalizacion=$penalizacion;
@@ -24,26 +24,42 @@ Class Reserva{
     }
 
     static function getReserva($id){
-        $sentencia = "SELECT * FROM reservas WHERE id_socio = $id";
-        return DB::query($sentencia);
+        $sentencia = "SELECT * FROM reservas WHERE num_reserva = $id";
+        // Devolvemos un objeto Reserva con los datos recojidos de la base de datos.
+        return new Reserva(Usuario::getSocio($result['numero_socio']),Instalacion::getInstalacion($result ['id_instalacion']),$result['fecha'],$result['minutos'],$result['penalizacion'],$result['num_reserva']);
     }
 
     static function getReservas(){
         $sentencia="SELECT * FROM reservas";
-        return DB::query($sentencia);
+        $result = DB::query($sentencia);    // Guardamos la consulta a la base de datos en la variable $result.
+        $arrayReservas = Array();   // Array que guarda los objetos Reserva que se van a extraer de la base de datos.
+
+        // Foreach para crear un objeto con cada fila extraida de las reservas y guardarlo en el Array.
+        foreach($result as $resultado) {
+            $object = new Reserva(Usuario::getSocio($result['numero_socio']),Instalacion::getInstalacion($result ['id_instalacion']),$result['fecha'],$result['minutos'],$result['penalizacion'],$result['num_reserva']);
+            array_push($arrayReservas, $object);    // Añadimos el nuevo objeto al Array.
+        }
+
+        return $arrayReservas;  // Devolvemos el Array.
     }
 
     static function getReservasSocio($socio) {
-        
         $sentencia = "SELECT * FROM reservas WHERE id_socio = $socio->id";
-        return DB::query($sentencia);
+        $result = DB::query($sentencia);
+        $arrayReservas = Array();   // Array para guardar los objetos Reservas.
+
+        // Foreach para crear un objeto con cada fila extraida de las reservas y guardarlo en el Array.
+        foreach($result as $resultado) {
+            $object = new Reserva(Usuario::getSocio($result['numero_socio']),Instalacion::getInstalacion($result ['id_instalacion']),$result['fecha'],$result['minutos'],$result['penalizacion'],$result['num_reserva']);
+            array_push($arrayReservas, $object);    // Añadimos el nuevo objeto al Array.
+        }
+
+        return $arrayReservas;  // Devolvemos el Array.
     }
 
     function confirmarReserva(){
      $sentencia="INSERT INTO reservas(numero_socio,instala,fecha,minutos,penalizacion) VALUES(this->$socio,this->$instalacion,this->$fecha,this->$minutos,this->$penalizacion)";
      return DB::query($sentencia);
-
-
     }
 
     static function añadirPenalizacion($num_reserva){
