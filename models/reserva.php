@@ -58,12 +58,14 @@ Class Reserva{
     }
 
     function confirmarReserva(){
-     $sentencia="INSERT INTO reservas(numero_socio,instala,fecha,minutos,penalizacion) VALUES(this->$socio,this->$instalacion,this->$fecha,this->$minutos,this->$penalizacion)";
-     return DB::query($sentencia);
+        $sentencia = "INSERT INTO reservas(numero_socio,instala,fecha,minutos,penalizacion) VALUES($this->$socio,$this->$instalacion,$this->$fecha,$this->$minutos,$this->$penalizacion)";  //Sentencia para insertar la reserva en la base de datos.
+
+        return DB::query($sentencia);
     }
 
     static function añadirPenalizacion($num_reserva){
         $sentencia = "UPDATE reservas SET penalizacion = true WHERE num_reserva = $num_reserva"; // Sentencia para insertar la penalizacion en la reserva.
+        
         return DB::query($sentencia);
     }
 
