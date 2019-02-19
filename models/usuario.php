@@ -1,6 +1,7 @@
 <?php 
 require_once('./db/DB.php');
-Class Usuario{
+
+class Usuario{
     
     private $id;
     private $dni;
@@ -25,12 +26,15 @@ Class Usuario{
         $this->telefono=$telefono;
         $this->miembros=$miembros;
     }
+
     function darDeAlta(){
         
-        $sentencia= "INSERT INTO socios(numero_socio,nombre,ape,dir,email,dni,cc,foto,tlf,miembros,password)VALUES ($this->id,$this->nombre,$this->apellidos,$this->dir,$this->email,$this->dni,$this->cc,'',$this->telefono,$this->miembros,$this->password)";
+        $sentencia= "INSERT INTO socios(numero_socio,nombre,ape,dir,email,dni,cc,foto,tlf,miembros,password)
+                        VALUES ($this->id,$this->nombre,$this->apellidos,$this->dir,$this->email,$this->dni,$this->cc,'',$this->telefono,$this->miembros,$this->password)";
         
         return DB::query($sentencia);
     }
+    
     static function getSocio($id){
         
         $sentencia="SELECT * FROM socios
@@ -40,9 +44,9 @@ Class Usuario{
     }
 
 
-    static function getPassword($id){
+    function getPassword(){
         
-        $sentencia="SELECT PASSWORD FROM socios WHERE $id=$this->id";
+        $sentencia="SELECT PASSWORD FROM socios WHERE id=$this->id";
 
         return DB::query($sentencia);
     }

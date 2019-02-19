@@ -24,7 +24,7 @@ Class Reserva{
     }
 
     static function getReserva($id){
-        $sentencia = "SELECT * FROM reservas WHERE $id=$this->id";
+        $sentencia = "SELECT * FROM reservas WHERE id_socio = $id";
         return DB::query($sentencia);
     }
 
@@ -35,7 +35,7 @@ Class Reserva{
 
     static function getReservasSocio($socio) {
         
-        $sentencia = "SELECT * FROM reservas WHERE $socio=$this->socio";
+        $sentencia = "SELECT * FROM reservas WHERE id_socio = $socio->id";
         return DB::query($sentencia);
     }
 
