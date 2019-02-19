@@ -41,7 +41,7 @@ Class Reserva{
     }
 
     function confirmarReserva(){
-     $sentencia="INSERT INTO reservas(numero_socio,instala,fecha,minutos,penalizacion) VALUES(this->$socio,this->$instalacion,this->$fecha,this->$minutos,this->$penalizacion);
+     $sentencia="INSERT INTO reservas(numero_socio,instala,fecha,minutos,penalizacion) VALUES(this->$socio,this->$instalacion,this->$fecha,this->$minutos,this->$penalizacion)";
      return DB::query($sentencia);
 
 

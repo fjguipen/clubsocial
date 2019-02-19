@@ -56,28 +56,32 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 	//Control de Reserva: 
 
-	//Comprobación de Socio & Llamada funcion getSocio del modelo usuario.php
-	if($socio->getSocio($idSocio)) {
+	if ($nuevoSocioChecked) {
 
+	}else {
+		//Comprobación de Socio & Llamada funcion getSocio del modelo usuario.php
+		if($socio->getSocio($idSocio)) {
 		//Comprobación de Contraseña de Socio para Realización de Reserva
 		//Llamada a funcion getPassword del modelo usuario.php
-		if($socio->getPassword($idSocio) == $password) {
-			//Creación de la Reserva:
-			$reserva = new Reserva(Socio, Instalacion::getInstalacion($idInstalacion), $fechaReserva, $horaReserva);
-			//Comprobación de Instalación Disponible Para Finalizar la Reserva
-			//Llamada a función instalacionDisponible del modelo reserva.php
-			if($reserva->instalacionDisponible()) { 
-				echo "Reserva creada.";		//Si Instalación Disponible es Correcta -> Reserva Creada
+			if($socio->getPassword($idSocio) == $password) {
+				//Creación de la Reserva:
+				$reserva = new Reserva(Socio, Instalacion::getInstalacion($idInstalacion), $fechaReserva, $horaReserva);
+				//Comprobación de Instalación Disponible Para Finalizar la Reserva
+				//Llamada a función instalacionDisponible del modelo reserva.php
+				if($reserva->instalacionDisponible()) { 
+					$reserva->confirmarReserva();	// Llamamos a confirmar reserva para crear la reserva en la Base de datos.
+					echo "Reserva creada.";		//Si Instalación Disponible es Correcta -> Reserva Creada
+				}else {
+					echo "Pista ocupada.";		//Si no -> Pista Ocupada
+				}
 			}else {
-				echo "Pista ocupada.";		//Si no -> Pista Ocupada
+				echo "La contraseña es incorrecta.";	//Si la Contraseña no es Correcta -> Muestra Mensaje	
 			}
 		}else {
-			echo "La contraseña es incorrecta.";	//Si la Contraseña no es Correcta -> Muestra Mensaje	
+			echo "El socio no existe."; //Si Comprobación de Socio es Incorrecta -> Socio no existe
+			$socio = new Socio($idSocio, $nombre, $apellidos, $dir, $email, $dni, $cc, $telefono, $miembros, $password);
+			$socio->darDeAlta($socio);
 		}
-	}else {
-		echo "El socio no existe."; //Si Comprobación de Socio es Incorrecta -> Socio no existe
-		$socio = new Socio($idSocio, $nombre, $apellidos, $dir, $email, $dni, $cc, $telefono, $miembros, $password);
-		$socio->darDeAlta($socio);
-	}
+	}	
 }
 ?>
