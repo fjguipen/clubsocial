@@ -29,10 +29,8 @@ Class Reserva{
     }
 
     static function getReservas(){
-
         $sentencia="SELECT * FROM reservas";
         return DB::query($sentencia);
-
     }
 
     static function getReservasSocio($socio) {
