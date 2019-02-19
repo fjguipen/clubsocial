@@ -1,23 +1,35 @@
 <?php 
     session_start(); 
 
-    if($_SERVER["REQUEST_METHOD"] === "POST"){
-        $loggout = isset($_POST["loggout"]);
+    require('../models/administrador.php');
 
+    if($_SERVER["REQUEST_METHOD"] === "GET"){
+        $loggout = isset($_GET["logout"]);
+        echo "waka";
         if ($loggout){
-            $_SESSION["user"]="";
+            unset($_SESSION["user"]);
+            header("Location: http://$_SERVER[HTTP_HOST]$_GET[location]");
         }
 
-        $user = htmlspecialchars($_POST["username"]);
+    } else if($_SERVER["REQUEST_METHOD"] === "POST"){
+        
+        $email = htmlspecialchars($_POST["username"]);
         $password = htmlspecialchars($_POST["password"]);
 
-        if($user != "" && $password != ""){
-            //$token = logInAdmin();
-            //crearSersion($token);
-            $_SESSION["user"]=Array("username"=>$user,"token"=>$token);
-            
+        $admin = new Administrador($email, $password);
+        
+        if($email != "" && $password != ""){          
+            logInAdmin($admin, $email);
             header("Location: http://$_SERVER[HTTP_HOST]$_GET[location]");
-
         }
+    }
+
+    function logInAdmin($admin, $email){
+        
+        if ($admin->isAdmin()->num_rows){
+            $_SESSION["user"]=password_hash($email, PASSWORD_BCRYPT);
+            return true;
+        }
+        return false;
     }
 ?>

@@ -22,7 +22,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 	$campoSocioMiembros;
 	//$campoSocioFoto; --> No se usa.
 
-
 	//Campos Reserva pista.
 	$campoReservaId;
 	$campoReservaSocio;
@@ -36,7 +35,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 	$idSocio = htmlspecialchars($_POST['id']);
 	$dni = htmlspecialchars($_POST['dni']);
     $nombre = htmlspecialchars($_POST['nombre']);
-    $apellidos = htmlspecialchars($_POST['apellidos']);
+	$apellidos = htmlspecialchars($_POST['apellidos']);
+	$dir = htmlspecialchars($_POST['direccion']);
 	$email = htmlspecialchars($_POST['email']);
 	$password = htmlspecialchars($_POST['password']);
 	$cc = htmlspecialchars($_POST['cc']);
@@ -48,42 +48,44 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 	//Asignación de variables recogida de los campos del formulario de Reserva.
 	$idReserva = htmlspecialchars($_POST['id']);
 	$socio = htmlspecialchars($_POST['socio']);
-	$instalacion = htmlspecialchars($_POST['instalacion']);
+	$idInstalacion = htmlspecialchars($_POST['instalacion']);
 	$fechaReserva = htmlspecialchars($_POST['fecha']);
 	$horaReserva = htmlspecialchars($_POST['hora']);
 	$penalizacion = htmlspecialchars($_POST['penalizacion']);
 	$nuevoReservaChecked = isset($_POST['newReserva']); /*--> Comprobación de existencia de Reserva.*/
 
-	$actualSocio = new Socio($idSocio, $dni, $nombre, $apellidos, $email, $password, $cc, $telefono, $miembros);
+	//Control de Reserva: 
 
-	//Comprobación de que el Socio esté registrado o no.
-	$esSocio = $actualSocio->esSocio();
+	if ($nuevoSocioChecked) {
 
-	if($nuevoSocioChecked) {
-		//Si el socio no existe.
-		if(!$esSocio) {
-			$reserva = new Reserva(Socio($idSocio), Socio($password), $instalacion, $fechaReserva, $horaReserva);
-			if($reserva->instalacionDisponible()) {
-				if($actualSocio->crearSocio() && $reserva->confirmarReserva()) {
-					echo "Socio y reserva creados correctamente.";
+	}else {
+		//Comprobación de Socio & Llamada funcion getSocio del modelo usuario.php
+		if($socio->getSocio($idSocio)) {
+		//Comprobación de Contraseña de Socio para Realización de Reserva
+		//Llamada a funcion getPassword del modelo usuario.php
+			if($socio->getPassword($idSocio) == $password) {
+				//Creación de la Reserva:
+				$reserva = new Reserva(Socio, Instalacion::getInstalacion($idInstalacion), $fechaReserva, $horaReserva);
+				//Comprobación de Instalación Disponible Para Finalizar la Reserva
+				//Llamada a función instalacionDisponible del modelo reserva.php
+				if($reserva->instalacionDisponible()) { 
+					$reserva->confirmarReserva();	// Llamamos a confirmar reserva para crear la reserva en la Base de datos.
+					echo "Reserva creada.";		//Si Instalación Disponible es Correcta -> Reserva Creada
+				}else {
+					echo "Pista ocupada.";		//Si no -> Pista Ocupada
 				}
 			}else {
-				echo "Pista ocupada.";
+				echo "La contraseña es incorrecta.";	//Si la Contraseña no es Correcta -> Muestra Mensaje	
 			}
 		}else {
-			echo "El socio ya existe.";
-		}
-	}else {
-		if($esSocio) {
-			$reserva = new Reserva(Socio($idSocio), Socio($password), $instalacion, $fechaReserva, $horaReserva);
-			if($reserva->instalacionDisponible() && $reserva->confirmarReserva()) {
-				echo "Reserva creada.";
-			}else {
-				echo "Pista ocupada.";
-			}
-		}else {
-			echo "El socio no existe.";
+			echo "El socio no existe."; //Si Comprobación de Socio es Incorrecta -> Socio no existe
+			$socio = new Socio($idSocio, $nombre, $apellidos, $dir, $email, $dni, $cc, $telefono, $miembros, $password);
+			$socio->darDeAlta($socio);
 		}
 	}
 }
+
+// Si no es un POST te muestra el archivo home.php que es el inicial.
+include ('./views/home.php');
+
 ?>

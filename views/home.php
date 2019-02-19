@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<title>Iniciar sesión como administrador</title>
+<title>Cub Social EUSA</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 <link rel="stylesheet" href="./assets/css/style.css">
 </head>
@@ -21,28 +21,64 @@
         <!-- FORMULARIO -->
         <br><br><br><br><br>
         <form>
-          Número de socio
-          <input type="number" name="numSocio" require>
-          <br><br>
-          Contraseña
-          <input type="password" name="password" require>
-          <br><br>
-          Instalación
-          <br>
-          <select name="instalacion">
-            <option value="tenis"> Pista de tenis </option> 
-            <option value="futbol"> Pista de fútbol </option> 
-            <option value="padel"> Pista de pádel </option> 
-          </select>
-          <br><br>
-          Fecha
-          <input type="date" name="fecha" require>
-          <br><br>
-          Hora
-          <input type="time" name="hora" require>
-          <br><br>
-          <input type="submit" name="reservar" value="Reservar">
-          <br>
+        <div class="row">
+        <div class="form-group">
+            <label for="dni">DNI</label>  
+            <br>  
+            <input type="text" name="dni" id="dni" required>
+            <br><br>
+            <label for="password">Contraseña</label>    
+            <input type="password" name="password" id="password" required>
+        </div>
+    </div>
+    <label for="newSocio" class="medium">Registrar nuevo socio</label>
+    <input type="checkbox" id="newClient" name="newSocio" value="nuevoCliente">
+    <div class="newClientData">
+        <div class="row">
+            <div class="form-group">
+                <label for="nombre">Nombre</label>    
+                <br>
+                <input type="text" name="nombre" id="nombre">
+            </div>
+            <div class="form-group">
+                <label for="apellidos">Apellidos</label>    
+                <input type="text" name="apellidos" id="apellidos">
+            </div>
+            <div class="form-group">
+                <label for="email">Correo electrónico</label>    
+                <br>
+                <input type="text" name="email" id="email">
+            </div>
+            <div class="form-group">
+                <label for="apellidos">Cuenta Bancaria</label>    
+                <input type="text" name="cc" id="cc">
+            </div>
+            <div class="form-group">
+                <label for="telefono">Nº de teléfono</label>    
+                <br>
+                <input type="number" name="telefono" id="telefono">
+            </div>
+        </div>
+    </div>    
+    <div class="row">
+            <div class="form-group">
+                <label for="fecha">Fecha de la reserva</label>
+                <input type="date" id="fecha" name="fecha">
+            </div>
+            <div class="form-group">
+            <label for="tipo">Instalación</label>
+            <select id="tipo" name="tipo" required>
+                <option selected disabled>-- seleccione una opción --</option>
+                <option value="tenis">Tenis</option>
+                <option value="padel">Pádel</option>
+                <option value="futbol">Fútbol</option>
+
+            </select>
+            </div>        
+        </div> 
+        <div class="centro1">
+        <button type="submit">REGISTRAR</button>
+      </div>
         </form>
 </div>
 </body>
