@@ -13,6 +13,7 @@ body{
   width:80%;
   margin:auto;
   overflow:hidden;
+  margin-top: 120px;
 }
   
 .logo{
@@ -45,7 +46,7 @@ header a{
 }
   
 header li{
-  float:left;
+  /*float:left;*/
   display:inline;
   padding: 0 20px 0 20px;
 }
@@ -76,7 +77,7 @@ header li{
     color:#cccccc;
     font-weight:bold;
   }
-   
+
   form{
     background-color: rgba(255, 255, 255, 0.25);
     border-radius: 10px;
