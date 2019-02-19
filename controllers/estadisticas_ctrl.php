@@ -16,11 +16,11 @@ require './db/BD.php';
             $sentencia="SELECT COUNT(*) FROM reservas
                         WHERE id=$instalacion;";
             $numReservas ->query($sentencia);
-            
+           
             array_push($informacion, Array("id"=>$id, "nommbre"=>$name,"reservas"=>$numReservas));
        }
-       
-       
+       $recomendacion=calculaRecomendacion($informacion);
+       array_push($informacion, Array("id"=>$id, "nombre"=>$name,"reservas"=>$numReservas,"recomendacion"=>$recomendacion));
             
        return $informacion;
 
@@ -28,20 +28,18 @@ require './db/BD.php';
 
     }
     
-    static function calculaRecomendacion(){
-        
-        $instalaciones;
-
-        $instalaciones= generarEstadisticas();
+    private static function calculaRecomendacion($informaciones){
+    
         $numMax=0;
-        foreach( $instalacones as $numReservas){
+        foreach( $informaciones as $informacion){
+            $numReservas=$informacion->$numReservas;
             if($numReservas>$numMax){
                 $numMax=$numReservas;
             }
         }
 
-        $instalaciones= $numMax;
-        return $instalaciones;
+        
+        return $numMax;
         }
     }   
     }
