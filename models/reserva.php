@@ -1,6 +1,6 @@
-<?
+<?php
 
-require './db/BD.php';
+require_once('./db/DB.php');
 
 Class Reserva{
 
