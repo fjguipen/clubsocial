@@ -1,5 +1,6 @@
 <?
-require './db/BD.php';
+require_once('./db/BD.php');
+
 Class Instalacion{ 
     private $id;
     private $nombre;

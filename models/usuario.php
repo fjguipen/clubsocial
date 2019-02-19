@@ -1,5 +1,5 @@
-<?
-require './db/BD.php';
+<?php 
+require_once('./db/DB.php');
 Class Usuario{
     
     private $id;
@@ -25,7 +25,7 @@ Class Usuario{
         $this->telefono=$telefono;
         $this->miembros=$miembros;
     }
-    static function darDeAlta(){
+    function darDeAlta(){
         
         $sentencia= "INSERT INTO socios(numero_socio,nombre,ape,dir,email,dni,cc,foto,tlf,miembros,password)VALUES ($this->id,$this->nombre,$this->apellidos,$this->dir,$this->email,$this->dni,$this->cc,'',$this->telefono,$this->miembros,$this->password)";
         
@@ -34,7 +34,7 @@ Class Usuario{
     static function getSocio($id){
         
         $sentencia="SELECT * FROM socios
-                        WHERE $id=$this->id;";
+                        WHERE id = $id";
 
         return DB::query($sentencia);
     }

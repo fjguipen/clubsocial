@@ -1,6 +1,6 @@
 <?php
 
-require('../db/DB.php');
+require_once('../db/DB.php');
 
 class Administrador {
     

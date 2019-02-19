@@ -1,7 +1,7 @@
 <?php
 //Requerimiento de acceso a datos usuario.php y reserva.php.
-require($_SERVER['DOCUMENT_ROOT']."/reservas/models/usuario.php");
-require($_SERVER['DOCUMENT_ROOT']."/reservas/models/reserva.php");
+require('./models/usuario.php');
+require('./models/reserva.php');
 	
 //Validación del método POST.
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
