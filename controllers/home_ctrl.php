@@ -82,6 +82,10 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 			$socio = new Socio($idSocio, $nombre, $apellidos, $dir, $email, $dni, $cc, $telefono, $miembros, $password);
 			$socio->darDeAlta($socio);
 		}
-	}	
+	}
 }
+
+// Si no es un POST te muestra el archivo home.php que es el inicial.
+include ('./views/home.php');
+
 ?>

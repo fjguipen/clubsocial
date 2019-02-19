@@ -48,12 +48,15 @@ Class Reserva{
     }
 
     function añadirPenalizacion(){
-
+        
 
     }
 
-    function instalacionDisponible($instalacion){
-
-
+    function instalacionDisponible(){
+        $idInstalacion = $this->instalacion->id;    // Extraemos el ID de la instalacion que queremos comprobar si esta reservada o no.
+        $sentencia = "SELECT * FROM reservas WHERE id_instalacion=$idInstalacion AND fecha=$this->fecha AND minutos=$this->minutos";
+        $query = DB::query($sentencia); // Ejecuto la sentencia.
+        $filas = $query->num_rows;  // Obtengo el numero de filas que devuelve la sentencia.
+        return !$filas > 0; // Si el numero de columnas es mayor que 0 la instalacion no esta disponible y devolvemos un false.
     }
 }
