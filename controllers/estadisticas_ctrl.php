@@ -1,4 +1,4 @@
-<?
+<?php
 require './db/BD.php';
  Class Estadisticas_ctrl{
     private $reservas;
