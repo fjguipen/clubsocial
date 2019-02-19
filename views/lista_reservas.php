@@ -15,6 +15,18 @@ if (isset($_SESSION["user"])){ ?>
             <h1>Gestión de reservas</h1>
         </header>
     <div class="container">
+        <div class="row">
+            <div class="col-md-2"> Nº Reserva </div>
+            <div class="col-md-2"> Nº Socio </div>
+            <div class="col-md-2"> Tipo de Reserva </div>
+            <div class="col-md-2"> Fecha </div>
+            <div class="col-md-2"> Hora </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4"> Nº de Socio </div>
+            <div class="col-md-4"> Nombre y Apellido </div>
+            <div class="col-md-4"> Nº Total de Reservas Mensuales </div>
+        </div>
     </div>
     </body>
     </html>
