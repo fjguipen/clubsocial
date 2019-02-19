@@ -1,28 +1,36 @@
 <?
 require './db/BD.php';
  Class Estadisticas_ctrl{
-    private $reservas=new array();
+    private $reservas;
 
     function __construct($objReserva){
         $this->reservas=$objReserva;
     }
 
     static function generarEstadisticas($instalaciones){ 
-        private $informacion =new array();
-       foreach($instalaciones as $instalacion){
-                $informacion=$id;
-                $informacion=$nombre;               
-        
-                $sentencia="SELECT COUNT(*) FROM reservas
-                         WHERE id=$instalacion;";
-                $informacion= $numReservas ->query($sentencia);
-                
-       }        
-        return $informacion;
+        $informacion = Array();
+        foreach($instalaciones as $instalacion){
+            $id = $instalacion->id;
+            $name = $instalacion->nombre;
+
+            $sentencia="SELECT COUNT(*) FROM reservas
+                        WHERE id=$instalacion;";
+            $numReservas ->query($sentencia);
+            
+            array_push($informacion, Array("id"=>$id, "nommbre"=>$name,"reservas"=>$numReservas));
        }
+       
+       
+            
+       return $informacion;
+
+       
+
+    }
+    
     static function calculaRecomendacion(){
         
-        $instalaciones = new array();
+        $instalaciones;
 
         $instalaciones= generarEstadisticas();
         $numMax=0;
