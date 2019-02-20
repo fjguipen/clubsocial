@@ -1,8 +1,17 @@
 <?php
 //Requerimiento de acceso a datos usuario.php y reserva.php.
-require('./models/usuario.php');
-require('./models/reserva.php');
-	
+
+if (strpos($_SERVER['PHP_SELF'],"index.php") ){
+	require('./models/usuario.php');
+	require('./models/reserva.php');
+} else {
+	require('../models/usuario.php');
+	require('../models/reserva.php');
+}
+
+
+
+
 //Validación del método POST.
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 	
@@ -83,9 +92,14 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 			$socio->darDeAlta($socio);
 		}
 	}
+} else {
+	if($_SERVER['REQUEST_METHOD'] == 'GET'){
+		include ('./views/home.php');
+	}
+	
 }
 
 // Si no es un POST te muestra el archivo home.php que es el inicial.
-include ('./views/home.php');
+
 
 ?>

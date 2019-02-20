@@ -1,6 +1,11 @@
 <?php 
+if (strpos($_SERVER['PHP_SELF'],"index.php") ){
+    require_once('./db/DB.php');
+} else {
+    require_once('../db/DB.php');
+}
 
-require_once('./db/DB.php');
+
 
 class Usuario {
     
