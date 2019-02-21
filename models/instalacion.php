@@ -3,7 +3,7 @@
 //Requerimiento de acceso a base de datos.
 require_once(dirname(__FILE__).'/../db/DB.php');
 
-Class Instalacion{ 
+class Instalacion{ 
 
     private $id;
     private $nombre;
@@ -21,8 +21,11 @@ Class Instalacion{
 
     static function getInstalacion($id){
         $sentencia = "SELECT * FROM instalaciones WHERE id_instalacion = $id";
-        //Debe devolver un objeto Instalación (Ver como se ha hecho en la clase Reserva)
-        return DB::query($sentencia);
+        
+        $result = mysqli_fetch_array(DB::query($sentencia), MYSQLI_ASSOC);
+
+        //Debe devolver un objeto de tipo Usuario
+        return new Instalacion($result["id_instalacion"],$result["nombre"],$result["precio"],$result["tiempo"]);
     }
 }
 ?>

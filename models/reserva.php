@@ -1,9 +1,10 @@
 <?php
 
 //Requerimiento de acceso a base de datos.
+require_once(dirname(__FILE__).'/../models/instalacion.php');
 require_once(dirname(__FILE__).'/../db/DB.php');
 
-Class Reserva{
+class Reserva{
 
     private $id;
     private $socio;
@@ -32,13 +33,16 @@ Class Reserva{
 
     static function getReservas(){
         $sentencia="SELECT * FROM reservas";
-        $result = DB::query($sentencia);    // Guardamos la consulta a la base de datos en la variable $result.
+        $result = DB::query($sentencia);
+        
+        // Guardamos la consulta a la base de datos en la variable $result.
+        $result = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        
         $arrayReservas = Array();   // Array que guarda los objetos Reserva que se van a extraer de la base de datos.
 
         // Foreach para crear un objeto con cada fila extraida de las reservas y guardarlo en el Array.
-        foreach($result as $resultado) {
-            $object = new Reserva(Usuario::getSocio($result['numero_socio']),Instalacion::getInstalacion($result ['id_instalacion']),$result['fecha'],$result['minutos'],$result['penalizacion'],$result['num_reserva']);
-            array_push($arrayReservas, $object);    // Añadimos el nuevo objeto al Array.
+        foreach($result as $reserva) {
+           array_push($arrayReservas, new Reserva(Usuario::getSocio($reserva['numero_socio']),Instalacion::getInstalacion($reserva ['id_instalacion']),$reserva['fecha'],$reserva['minutos'],$reserva['penalizacion'],$reserva['num_reserva']));
         }
 
         return $arrayReservas;  // Devolvemos el Array.

@@ -41,16 +41,26 @@ class Usuario {
     
     static function getSocio($id) {
         $sentencia = "SELECT * FROM socios WHERE numero_socio = $id";
+        //mysqli_fetch_array devuelve la primera fila de la consulta sql
+        $result = mysqli_fetch_array(DB::query($sentencia), MYSQLI_ASSOC);
 
         //Debe devolver un objeto de tipo Usuario
-        return DB::query($sentencia);
+        return new Usuario($result["numero_socio"],$result["dni"],$result["nombre"],$result["ape"],$result["dir"],$result["email"],$result["password"],$result["cc"],$result["tlf"],$result["miembros"]);
     }
 
     static function getSocios() {
         $sentencia = "SELECT * FROM socios";
+        //Extraemos los datos del resultado de consulta sql en un array asociativo
+        $result = mysqli_fetch_all(DB::query($sentencia), MYSQLI_ASSOC);
+        $socios = Array();
+
+        //Recorremos el array asocativo y creamos un objeto Usuario con cada usuario devuelto
+        foreach($result as $socio){
+            array_push($socios, new Usuario($socio["numero_socio"],$socio["dni"],$socio["nombre"],$socio["ape"],$socio["dir"],$socio["email"],$socio["password"],$socio["cc"],$socio["tlf"],$socio["miembros"])); 
+        }
 
         //Debe devolver un array de objetos de tipo Usuario
-        return DB::query($sentencia);
+        return $socios;
     }
 
     function getPassword() {

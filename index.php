@@ -13,7 +13,7 @@
             include("./controllers/home_ctrl.php");
             break;
         case 'reservas':
-            include("./views/lista_reservas.php");
+            include("./controllers/lista_reservas_ctrl.php");
             break;
         case 'estadisticas':
             include("./views/estadisticas.php");
