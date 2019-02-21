@@ -7,22 +7,20 @@ require_once(dirname(__FILE__).'/../models/usuario.php');
 if (isset($_SESSION["user"])){
 	
 	//Obtenemos todas las reservas y la guardamos en la variable para que sea utilizala en la vista
-	//$reservas = Reserva::getReservas();
+	$reservas = Reserva::getReservas();
+	
 	//Obtenemos una lista con todos los socios
 	$listaSocios = Usuario::getSocios();
+	
 	//Preparamos el array donde incluiremos la informacion relevante de cada socio para la utilizar en la vista
 	$socios = Array();
-
-	//print_r($listaSocios);
-
-
+	
 	//Cargamos la informacion de los socios en $socios
 	foreach($listaSocios as $socio){
-		
 		//$reservas =  Reserva::getReservasSocio($socio["id"]);
-		//array_push($socios, Array($socio->id, $socio->dni, count($reservas)));
+		array_push($socios, Array($socio->id, $socio->dni, count($reservas)));
 	}
-	//print_r($socios);
+	
 	//Incluimos la vista de reservas
 	include("./views/lista_reservas.php");
 
@@ -31,5 +29,4 @@ if (isset($_SESSION["user"])){
 	//No está logeado como admnistrado, mostramos la página de logeo
 	include(dirname(__FILE__)."/../views/login.php");
 }
-
 ?>

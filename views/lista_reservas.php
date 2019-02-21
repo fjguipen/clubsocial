@@ -32,6 +32,16 @@
             <!--Planificación para el resto de filas tabla1-->
             <div class="row">   
                 <!--Obtención de datos del socio correspondiente
+
+                *******************************************************************
+                *******************************************************************
+                        VER CLASE RESERVA Y COMPROBAR SUS ATRIBUTOS,
+                        LOS QUE AQUI SE LLAMAN NO COINCIDEN CON LOS DE LA
+                        CLASE RESERVA
+                *******************************************************************
+                *******************************************************************        
+
+
                 Nº Reserva | Nº Socio | Tipo de Instalación | Fecha | Hora -->
                     <div class="col-md-2"> <?php $reserva->num_reserva?></div>
                     <div class="col-md-2"> <?php $reserva->numero_socio?></div>

@@ -5,10 +5,10 @@ require_once(dirname(__FILE__).'/../db/DB.php');
 
 class Instalacion{ 
 
-    private $id;
-    private $nombre;
-    private $precio;
-    private $tiempo;
+    public $id;
+    public $nombre;
+    public $precio;
+    public $tiempo;
 
     function __construct($id,$nombre,$precio,$tiempo){
 

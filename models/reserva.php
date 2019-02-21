@@ -6,12 +6,12 @@ require_once(dirname(__FILE__).'/../db/DB.php');
 
 class Reserva{
 
-    private $id;
-    private $socio;
-    private $instalacion;
-    private $fecha;
-    private $minutos;
-    private $penalizacion;
+    public $id;
+    public $socio; // :Socio
+    public $instalacion; // :Instalacion
+    public $fecha;
+    public $minutos;
+    public $penalizacion;
 
 
     function __construct($socio,$instalacion,$fecha,$minutos,$penalizacion=null,$id=null){
@@ -36,7 +36,7 @@ class Reserva{
         $result = DB::query($sentencia);
         
         // Guardamos la consulta a la base de datos en la variable $result.
-        $result = mysqli_fetch_array($result, MYSQLI_ASSOC);
+        $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
         
         $arrayReservas = Array();   // Array que guarda los objetos Reserva que se van a extraer de la base de datos.
 

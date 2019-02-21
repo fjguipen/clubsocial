@@ -5,17 +5,18 @@ require_once(dirname(__FILE__).'/../db/DB.php');
 
 
 class Usuario {
-    
-    private $id;
-    private $dni;
-    private $nombre;
-    private $apellidos;
-    private $dir;
-    private $email;
-    private $password;
-    private $cc;
-    private $telefono;
-    private $miembros;
+
+    //Atributos han de ser publicos , si no tendríamos que tener un get para cada uno!
+    public $id;
+    public $dni;
+    public $nombre;
+    public $apellidos;
+    public $dir;
+    public $email;
+    public $password;
+    public $cc;
+    public $telefono;
+    public $miembros;
 
     function __construct($id,$dni,$nombre,$apellidos,$dir,$email,$password,$cc,$telefono,$miembros) {
 
@@ -45,7 +46,7 @@ class Usuario {
         $result = mysqli_fetch_array(DB::query($sentencia), MYSQLI_ASSOC);
 
         //Debe devolver un objeto de tipo Usuario
-        return new Usuario($result["numero_socio"],$result["dni"],$result["nombre"],$result["ape"],$result["dir"],$result["email"],$result["password"],$result["cc"],$result["tlf"],$result["miembros"]);
+        return new Usuario($result["numero_socio"],$result["dni"],$result["nombre"],$result["ape"],$result["dir"],$result["email"],$result["password"],$result["cc"],$result["telefono"],$result["miembros"]);
     }
 
     static function getSocios() {
@@ -56,7 +57,7 @@ class Usuario {
 
         //Recorremos el array asocativo y creamos un objeto Usuario con cada usuario devuelto
         foreach($result as $socio){
-            array_push($socios, new Usuario($socio["numero_socio"],$socio["dni"],$socio["nombre"],$socio["ape"],$socio["dir"],$socio["email"],$socio["password"],$socio["cc"],$socio["tlf"],$socio["miembros"])); 
+            array_push($socios, new Usuario($socio["numero_socio"],$socio["dni"],$socio["nombre"],$socio["ape"],$socio["dir"],$socio["email"],$socio["password"],$socio["cc"],$socio["telefono"],$socio["miembros"])); 
         }
 
         //Debe devolver un array de objetos de tipo Usuario
