@@ -1,10 +1,7 @@
 <?php 
-if (strpos($_SERVER['PHP_SELF'],"index.php") ){
-    require_once('./db/DB.php');
-} else {
-    require_once('../db/DB.php');
-}
 
+//Requerimiento de acceso a base de datos.
+require_once(dirname(__FILE__).'/../db/DB.php');
 
 
 class Usuario {
@@ -36,24 +33,29 @@ class Usuario {
     }
 
     function darDeAlta() {
+        //Las contraseñas nunca se guardan tal cual en la base de datos, deberían guardarse encriptadas
         $sentencia = "INSERT INTO socios(numero_socio,nombre,ape,dir,email,dni,cc,foto,tlf,miembros,password) VALUES ($this->id,$this->nombre,$this->apellidos,$this->dir,$this->email,$this->dni,$this->cc,'',$this->telefono,$this->miembros,$this->password)";
         
         return DB::query($sentencia);
     }
     
     static function getSocio($id) {
-        $sentencia = "SELECT * FROM socios WHERE id=$id";
+        $sentencia = "SELECT * FROM socios WHERE numero_socio = $id";
 
+        //Debe devolver un objeto de tipo Usuario
         return DB::query($sentencia);
     }
 
     static function getSocios() {
         $sentencia = "SELECT * FROM socios";
+
+        //Debe devolver un array de objetos de tipo Usuario
         return DB::query($sentencia);
     }
 
     function getPassword() {
-        $sentencia="SELECT password FROM socios WHERE id=$this->id";
+        //Aquí se desencriptaría la contraseña, en caso de haber sido encriptada
+        $sentencia="SELECT password FROM socios WHERE numero_socio = $this->id";
 
         return DB::query($sentencia);
     }

@@ -1,15 +1,8 @@
 <?php
+
 //Requerimiento de acceso a datos usuario.php y reserva.php.
-
-if (strpos($_SERVER['PHP_SELF'],"index.php") ){
-	require('./models/usuario.php');
-	require('./models/reserva.php');
-} else {
-	require('../models/usuario.php');
-	require('../models/reserva.php');
-}
-
-
+require_once(dirname(__FILE__).'/../models/usuario.php');
+require_once(dirname(__FILE__).'/../models/reserva.php');
 
 
 //Validación del método POST.

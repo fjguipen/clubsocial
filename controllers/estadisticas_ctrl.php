@@ -1,4 +1,11 @@
 <?php
+
+/*
+    Mirar funcionamiento del controlador en lista_reservas_ctrl.php.
+    El funcionamiento de este controlador debería ser similar, proporcinando variables con los
+    datos necesarios que se utilizarán en la vista.
+*/
+
 require './db/BD.php';
  Class Estadisticas_ctrl{
     private $reservas;

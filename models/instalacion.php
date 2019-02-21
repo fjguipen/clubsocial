@@ -1,6 +1,7 @@
 <?php
 
-require_once('./db/BD.php');
+//Requerimiento de acceso a base de datos.
+require_once(dirname(__FILE__).'/../db/DB.php');
 
 Class Instalacion{ 
 
@@ -19,8 +20,8 @@ Class Instalacion{
     }
 
     static function getInstalacion($id){
-        $sentencia = "SELECT * FROM instalaciones WHERE $id=$this->id";
-
+        $sentencia = "SELECT * FROM instalaciones WHERE id_instalacion = $id";
+        //Debe devolver un objeto Instalación (Ver como se ha hecho en la clase Reserva)
         return DB::query($sentencia);
     }
 }

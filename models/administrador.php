@@ -1,6 +1,7 @@
 <?php
 
-require_once('../db/DB.php');
+//Requerimiento de acceso a base de datos.
+require_once(dirname(__FILE__).'/../db/DB.php');
 
 class Administrador {
     

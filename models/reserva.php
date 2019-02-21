@@ -1,9 +1,7 @@
 <?php
-if (strpos($_SERVER['PHP_SELF'],"index.php") ){
-    require_once('./db/DB.php');
-} else {
-    require_once('../db/DB.php');
-}
+
+//Requerimiento de acceso a base de datos.
+require_once(dirname(__FILE__).'/../db/DB.php');
 
 Class Reserva{
 
