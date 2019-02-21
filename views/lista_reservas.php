@@ -3,14 +3,19 @@
     <head>
     <title>Gestión de reservas</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']?>/clubsocial/assets/css/style.css">
     </head>
 
     <body>
-        <header>
-            <!--Incluimos la vista del mainmenu-->
+    <header>
+        <div class="container">
+            <div id="branding">
             <?php include("./views/partials/mainmenu.php"); ?>
-            <h1>Gestión de reservas</h1>
-        </header>
+            <img class="logo" alt="logo" src="http://<?php echo $_SERVER['HTTP_HOST']?>/clubsocial/assets/img/logo.png"/>
+            <h1><span class="highlight">RESERVAS</span></h1>
+            </div>
+        </div>
+    </header>
         <!--Comienzo de la tabla-->
     <div class="container">
         <!--Planificación de fila 1 para tabla 1-->

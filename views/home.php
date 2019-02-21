@@ -3,7 +3,7 @@
 <head>
 <title>Cub Social EUSA</title>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link rel="stylesheet" href="./assets/css/style.css">
+<link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']?>/clubsocial/assets/css/style.css">
 </head>
 
 <body>
@@ -19,7 +19,6 @@
     </header>
 <div class="container">
         <!-- FORMULARIO -->
-        <br><br><br><br><br>
         <form action="./controllers/home_ctrl.php" method="POST">
         <div class="row">
         <div class="form-group">
