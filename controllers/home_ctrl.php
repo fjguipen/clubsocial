@@ -40,7 +40,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 		$socio = Usuario::darDeAlta($nombre,$apellidos,$dir,$email,$dni,$cc,$telefono,$miembros,$password);
 
 	} else {
-		$socio->getSocio($idSocio);
+		$socio = Usuario::getSocio($idSocio);
 		if ($socio->getPassword($idSocio) != $password){
 			echo "La contraseña es incorrecta.";
 			$socio = null;
@@ -50,9 +50,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 	//Aqui $socio tiene un soci
 	if($socio){
 		$reserva = new Reserva($socio, Instalacion::getInstalacion($idInstalacion), $fechaReserva, $horaReserva);
+		
 		if($reserva->instalacionDisponible()){
+			/*
+			if ($reserva->confirmarReserva()){
+				echo "cofirmada";
+			} else {
+				echo "Error insert";
+			}
+			*/
+
 			$reserva->confirmarReserva();
-			echo "cofirmada";
+			
 		} else {
 			echo "Instalacion no disponible";
 		}

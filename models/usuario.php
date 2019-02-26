@@ -82,7 +82,7 @@ class Usuario {
         //Aquí se desencriptaría la contraseña, en caso de haber sido encriptada
         $sentencia="SELECT password FROM socios WHERE numero_socio = $this->id";
 
-        return DB::query($sentencia);
+        return mysqli_fetch_array(DB::query($sentencia))["password"];
     }
 }
 
