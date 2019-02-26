@@ -54,8 +54,9 @@
                         <div class="col-md-2"> <?php echo $reserva->instalacion->id?></div>
                         <div class="col-md-2"> <?php echo $reserva->fecha?></div>
                         <div class="col-md-2"> <?php echo $reserva->minutos?></div>
+                </div>        
                 <?php } ?>
-                </div>
+                
         </div>
         <!--Planificación de filas para tabla 2-->
         <div class="row_table">
@@ -83,9 +84,10 @@
                 Nº Socio | Nombre de Socio | Apellido de Socio | Nº total de Reservas Mensuales -->
                     <div class="col-md-4"> <?php echo $socio[0]?></div>
                     <div class="col-md-4"> <?php echo $socio[1]?></div>
-                    <div class="col-md-4"> <?php echo $socio[2]?></div>               
+                    <div class="col-md-4"> <?php echo $socio[2]?></div>  
+            </div>             
             <?php } ?>
-            </div>
+            
     </div>
 </body>
 </html>
