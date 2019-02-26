@@ -72,7 +72,7 @@
                     dni,
                     totalReservas
                 ]
-            */    
+            */ 
             //$reservas = Reserva::getReservasSocio();
             foreach($socios as $socio){?>
             <!--Planificación de resto de filas para tabla 2-->
