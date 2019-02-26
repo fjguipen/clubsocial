@@ -86,7 +86,7 @@ class Reserva{
         return !$filas > 0; // Si el numero de columnas es mayor que 0 la instalacion no esta disponible y devolvemos un false.
     }
 
-    function getReservasMes($mes,$anio){
+    static function getReservasMes($mes,$anio){
 
         $sentencia = "SELECT  i.nombre, COUNT(r.num_reserva) as total FROM instalaciones as i
         INNER JOIN reservas as r
