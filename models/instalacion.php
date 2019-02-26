@@ -29,5 +29,14 @@ class Instalacion{
         return new Instalacion($result["id_instalacion"],$result["nombre"],$result["precio"],$result["tiempo"]);
         
     }
+
+    static function getINstalaciones(){
+        $sentencia = "SELECT * FROM instalaciones";
+        $result = mysqli_fetch_all(DB::query($sentencia),MYSQLI_ASSOC);
+        $instalaciones = Array();
+        foreach($result as $instalacion){
+            array_push($instalaciones, new Instalacion($instalacion["id_instalacion"],$instalacion["nombre"],$instalacion["precio"],$instalacion["tiempo"]));
+        }
+    }
 }
 ?>
