@@ -86,9 +86,11 @@
             <label for="instalacion">Instalación</label>
             <select id="instalacion" name="instalacion" required>
                 <option selected disabled>-- seleccione una opción --</option>
-                <option value="tenis">Tenis</option>
-                <option value="padel">Pádel</option>
-                <option value="futbol">Fútbol</option>
+                <?php
+                    foreach($instalaciones as $instalacion){?>
+                        <option value="<?php echo $instalacion->id?>"><?php echo $instalacion->nombre?></option>;
+                    <?php } 
+                ?>
             </select>
             </div>        
         </div> 
