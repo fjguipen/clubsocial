@@ -92,7 +92,7 @@ class Reserva{
         INNER JOIN reservas as r
         ON i.id_instalacion = r.id_instalacion
         WHERE  MONTH(FECHA)=2 and YEAR(FECHA)=2019
-        GROUP BY i.id_instalacion"
+        GROUP BY i.id_instalacion";
         $query = DB::query($sentencia); // Ejecuto la sentencia.
         // Guardamos la consulta a la base de datos en la variable $result.
         $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
