@@ -88,7 +88,11 @@ class Reserva{
 
     function getReservasMes($mes,$anio){
 
-        $sentencia = "SELECT COUNT() FROM reservas WHERE  MONTH($mes) and YEAR($anio) GROUP BY id_instalacion"
+        $sentencia = "SELECT  i.nombre, COUNT(r.num_reserva) as total FROM instalaciones as i
+        INNER JOIN reservas as r
+        ON i.id_instalacion = r.id_instalacion
+        WHERE  MONTH(FECHA)=2 and YEAR(FECHA)=2019
+        GROUP BY i.id_instalacion"
         $query = DB::query($sentencia); // Ejecuto la sentencia.
         // Guardamos la consulta a la base de datos en la variable $result.
         $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
@@ -97,7 +101,7 @@ class Reserva{
 
         // Foreach para crear un objeto con cada fila extraida de las reservas y guardarlo en el Array.
         foreach($result as $reserva) {
-           array_push($arrayReservas, new Reserva(Usuario::getSocio($reserva['numero_socio']),Instalacion::getInstalacion($reserva ['id_instalacion']),$reserva['fecha'],$reserva['minutos'],$reserva['penalizacion'],$reserva['num_reserva']));
+           array_push($arrayReservas, Array("nombre"=>$reserva["nombre"], "total"=>$reserva["total"]));
         }
 
         return $arrayReservas;
