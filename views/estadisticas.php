@@ -1,6 +1,5 @@
-<?php 
 
-if (isset($_SESSION["user"])){ ?>
+
 
     <!DOCTYPE html>
     <html lang="es">
@@ -15,13 +14,14 @@ if (isset($_SESSION["user"])){ ?>
     <header>
         <div class="container">
             <div id="branding">
+            <br /><br /><br />
             <?php include("./views/partials/mainmenu.php"); ?>
             <img class="logo" alt="logo" src="http://<?php echo $_SERVER['HTTP_HOST']?>/clubsocial/assets/img/logo.png"/>
             <h1><span class="highlight">ESTADÍSTICAS</span></h1>
             </div>
         </div>
     </header>
-    <div id="contenedor"></div>
+    <div id="container"></div>
     <script>
       anychart.onDocumentReady(function() {
  
@@ -29,9 +29,9 @@ if (isset($_SESSION["user"])){ ?>
         var data = {
             header: ["Name", "Nº de reservas"],
             rows: [
-              ["Pista de tenis", 60],
-              ["Pista de fútbol", 120],
-              ["Pista de pádel", 200]
+                <?php
+                    echo $informacion;
+                ?>
         ]};
  
         // create the chart
@@ -52,8 +52,3 @@ if (isset($_SESSION["user"])){ ?>
     </div>
     </body>
     </html>
-
-<?php } else {
-    include ("login.php");
-}
-?>

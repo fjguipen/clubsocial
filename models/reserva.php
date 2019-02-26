@@ -95,7 +95,7 @@ class Reserva{
         GROUP BY i.id_instalacion";
         $query = DB::query($sentencia); // Ejecuto la sentencia.
         // Guardamos la consulta a la base de datos en la variable $result.
-        $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
         
         $arrayReservas = Array();   // Array que guarda los objetos Reserva que se van a extraer de la base de datos.
 

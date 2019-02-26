@@ -16,7 +16,7 @@
             include("./controllers/lista_reservas_ctrl.php");
             break;
         case 'estadisticas':
-            include("./views/estadisticas.php");
+            include("./controllers/estadisticas_ctrl.php");
             break;    
         default :
             include("./views/404.php");

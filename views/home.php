@@ -75,7 +75,6 @@
                 <option value="tenis">Tenis</option>
                 <option value="padel">Pádel</option>
                 <option value="futbol">Fútbol</option>
-
             </select>
             </div>        
         </div> 
