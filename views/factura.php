@@ -16,23 +16,7 @@
             </div>
     </header>
         <div class="container">
-            <form action="./controllers/admin_ctrl.php?location=<?php echo $_SERVER['REQUEST_URI']  ?>" method="POST">
-                    <div class="form-group">
-                        <label for="nSocio">Numero de socio:</label>
-                        <input id="nSocio" name="nSocio"class="form-control" type="text" value="" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="mes">Mes:</label>
-                        <input id="mes" name="mes" class="form-control" type="text" value="" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="anio">Año:</label>
-                        <input id="anio" name="anio" class="form-control" type="text" value="" required>
-                    </div>
-                    <div class="form-group">
-                        <input type="submit" class="form-control" value="Enviar">    
-                    </div>
-            </form>
+            
         </div>
 </body>
 </html>
