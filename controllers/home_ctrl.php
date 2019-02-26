@@ -36,8 +36,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 		//crea socio
 
-		Usuario::darDeAlta($nombre,$apellidos,$dir,$email,$dni,$cc,$telefono,$miembros,$password);
-
+		$socio = Usuario::darDeAlta($nombre,$apellidos,$dir,$email,$dni,$cc,$telefono,$miembros,$password);
 
 	} else {
 		$socio->getSocio($idSocio);
