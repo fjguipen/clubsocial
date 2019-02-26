@@ -31,7 +31,7 @@
         </div>
     </div>
     <label for="newSocio" class="medium">Registrar nuevo socio</label>
-    <input type="checkbox" id="newClient" name="newSocio" value="nuevoCliente">
+    <input type="checkbox" id="newSocio" name="newSocio" value="nuevoCliente">
     <div class="newClientData">
         <div class="row">
             <div class="form-group">
@@ -86,9 +86,11 @@
             <label for="instalacion">Instalación</label>
             <select id="instalacion" name="instalacion" required>
                 <option selected disabled>-- seleccione una opción --</option>
-                <option value="tenis">Tenis</option>
-                <option value="padel">Pádel</option>
-                <option value="futbol">Fútbol</option>
+                <?php
+                    foreach($instalaciones as $instalacion){?>
+                        <option value="<?php echo $instalacion->id?>"><?php echo $instalacion->nombre?></option>;
+                    <?php } 
+                ?>
             </select>
             </div>        
         </div> 

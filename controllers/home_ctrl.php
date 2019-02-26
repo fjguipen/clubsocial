@@ -3,6 +3,7 @@
 //Requerimiento de acceso a datos usuario.php y reserva.php.
 require_once(dirname(__FILE__).'/../models/usuario.php');
 require_once(dirname(__FILE__).'/../models/reserva.php');
+require_once(dirname(__FILE__).'/../models/instalacion.php');
 
 
 //Validación del método POST.
@@ -59,12 +60,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 } else {
 
-	if($_SERVER['REQUEST_METHOD'] == 'GET'){
+	//if($_SERVER['REQUEST_METHOD'] == 'GET'){
 
-		//$instalaciones = Instalacion::getInstalaciones();
+		$instalaciones = Instalacion::getInstalaciones();
 
 		include ('./views/home.php');
-	}
+	//}
 	
 }
 
