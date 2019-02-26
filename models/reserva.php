@@ -54,7 +54,21 @@ class Reserva{
 
     static function getReservasSocio($socio) {
         $sentencia = "SELECT * FROM reservas WHERE id_socio = $socio->id";
-        $result = DB::query($sentencia);
+        $result = mysqli_fetch_array(DB::query($sentencia), MYSQLI_ASSOC);
+        $arrayReservas = Array();   // Array para guardar los objetos Reservas.
+
+        // Foreach para crear un objeto con cada fila extraida de las reservas y guardarlo en el Array.
+        foreach($result as $resultado) {
+            $object = new Reserva(Usuario::getSocio($result['numero_socio']),Instalacion::getInstalacion($result ['id_instalacion']),$result['fecha'],$result['minutos'],$result['penalizacion'],$result['num_reserva']);
+            array_push($arrayReservas, $object);    // Añadimos el nuevo objeto al Array.
+        }
+
+        return $arrayReservas;  // Devolvemos el Array.
+    }
+    
+    static function getReservasSocioMes($socio , $mes, $anio) {
+        $sentencia = "SELECT * FROM reservas WHERE id_socio = $socio->id AND MONTH(FECHA)=$mes and YEAR(FECHA)=$anio";
+        $result = mysqli_fetch_array(DB::query($sentencia), MYSQLI_ASSOC);
         $arrayReservas = Array();   // Array para guardar los objetos Reservas.
 
         // Foreach para crear un objeto con cada fila extraida de las reservas y guardarlo en el Array.
