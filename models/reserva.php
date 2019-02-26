@@ -54,7 +54,7 @@ class Reserva{
 
     static function getReservasSocio($socio) {
         $sentencia = "SELECT * FROM reservas WHERE id_socio = $socio->id";
-        $result = DB::query($sentencia);
+        $result = mysqli_fetch_array(DB::query($sentencia), MYSQLI_ASSOC);
         $arrayReservas = Array();   // Array para guardar los objetos Reservas.
 
         // Foreach para crear un objeto con cada fila extraida de las reservas y guardarlo en el Array.
