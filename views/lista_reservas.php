@@ -23,7 +23,7 @@
             <!--Fila 1 con datos por columnas => Nº Reserva | Nº Socio | Tipo de Reserva | Fecha | Hora-->
             <div class="col-md-2"> Nº Reserva </div>
             <div class="col-md-2"> Nº Socio </div>
-            <div class="col-md-2"> Tipo de Reserva </div>
+            <div class="col-md-2"> Instalacion </div>
             <div class="col-md-2"> Fecha </div>
             <div class="col-md-2"> Hora </div>
         </div>
@@ -49,8 +49,8 @@
 
                 Nº Reserva | Nº Socio | Tipo de Instalación | Fecha | Hora -->
                     <div class="col-md-2"> <?php echo $reserva->id?></div>
-                    <div class="col-md-2"> <?php echo $reserva->socio?></div>
-                    <div class="col-md-2"> <?php echo $reserva->instalacion?></div>
+                    <div class="col-md-2"> <?php echo $reserva->socio->id?></div>
+                    <div class="col-md-2"> <?php echo $reserva->instalacion->id?></div>
                     <div class="col-md-2"> <?php echo $reserva->fecha?></div>
                     <div class="col-md-2"> <?php echo $reserva->minutos?></div>
             <?php } ?>
