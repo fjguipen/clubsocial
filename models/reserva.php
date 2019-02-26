@@ -91,7 +91,7 @@ class Reserva{
         $sentencia = "SELECT  i.nombre, COUNT(r.num_reserva) as total FROM instalaciones as i
         INNER JOIN reservas as r
         ON i.id_instalacion = r.id_instalacion
-        WHERE  MONTH(FECHA)=2 and YEAR(FECHA)=2019
+        WHERE  MONTH(FECHA)=$mes and YEAR(FECHA)=$anio
         GROUP BY i.id_instalacion";
         $query = DB::query($sentencia); // Ejecuto la sentencia.
         // Guardamos la consulta a la base de datos en la variable $result.
