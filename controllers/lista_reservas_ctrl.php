@@ -17,7 +17,7 @@ if (isset($_SESSION["user"])){
 	
 	//Cargamos la informacion de los socios en $socios
 	foreach($listaSocios as $socio){
-		$reservasSocio =  Reserva::getReservasSocio($socio["id"]);
+		$reservasSocio =  Reserva::getReservasSocio($socio->id);
 		array_push($socios, Array($socio->id, $socio->dni, count($reservasSocio)));
 	}
 	

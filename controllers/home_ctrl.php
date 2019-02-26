@@ -60,6 +60,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 } else {
 
 	if($_SERVER['REQUEST_METHOD'] == 'GET'){
+
+		//$instalaciones = Instalacion::getInstalaciones();
+
 		include ('./views/home.php');
 	}
 	
