@@ -74,16 +74,14 @@
                 ]
             */    
             //$reservas = Reserva::getReservasSocio();
-            foreach($reservas as $reserva){?>
+            foreach($socios as $socio){?>
             <!--Planificación de resto de filas para tabla 2-->
             <div class="row">  
                 <!--Obtención de datos del socio correspondiente
                 Nº Socio | Nombre de Socio | Apellido de Socio | Nº total de Reservas Mensuales -->
-                    <div class="col-md-2"> <?php $reserva->numero_socio?></div>
-                    <div class="col-md-2"> <?php $reserva->socio->nombre." ".$reserva->socio->ape?></div>
-                    <div class="col-md-2"> <?php $reserva->fecha?></div>
-
-                
+                    <div class="col-md-2"> <?php $socio[0]?></div>
+                    <div class="col-md-2"> <?php $socio[1]?></div>
+                    <div class="col-md-2"> <?php $socio[2]?></div>               
             <?php } ?>
             </div>
 </div>
