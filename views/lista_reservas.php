@@ -48,9 +48,9 @@
 
 
                 Nº Reserva | Nº Socio | Tipo de Instalación | Fecha | Hora -->
-                    <div class="col-md-2"> <?php $reserva->num_reserva?></div>
-                    <div class="col-md-2"> <?php $reserva->numero_socio?></div>
-                    <div class="col-md-2"> <?php $reserva->id_instalacion?></div>
+                    <div class="col-md-2"> <?php $reserva->id?></div>
+                    <div class="col-md-2"> <?php $reserva->socio?></div>
+                    <div class="col-md-2"> <?php $reserva->instalacion?></div>
                     <div class="col-md-2"> <?php $reserva->fecha?></div>
                     <div class="col-md-2"> <?php $reserva->minutos?></div>
             <?php } ?>
