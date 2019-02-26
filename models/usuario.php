@@ -33,9 +33,9 @@ class Usuario {
 
     }
 
-    function darDeAlta() {
+    static function darDeAlta($nombre,$apellidos,$dir,$email,$dni,$cc,$telefono,$miembros,$password) {
         //Las contraseñas nunca se guardan tal cual en la base de datos, deberían guardarse encriptadas
-        $sentencia = "INSERT INTO socios(numero_socio,nombre,ape,dir,email,dni,cc,foto,tlf,miembros,password) VALUES ($this->id,$this->nombre,$this->apellidos,$this->dir,$this->email,$this->dni,$this->cc,'',$this->telefono,$this->miembros,$this->password)";
+        $sentencia = "INSERT INTO socios(nombre,ape,dir,email,dni,cc,foto,tlf,miembros,password) VALUES ($nombre,$apellidos,$dir,$email,$dni,$cc,'',$telefono,$miembros,$password)";
         
         return DB::query($sentencia);
     }

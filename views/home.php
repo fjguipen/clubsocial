@@ -22,9 +22,9 @@
         <form action="./controllers/home_ctrl.php" method="POST">
         <div class="row">
         <div class="form-group">
-            <label for="dni">DNI</label>  
+            <label for="nSocio">Número de socio</label>  
             <br>  
-            <input type="text" name="dni" id="dni" required>
+            <input type="text" name="nSocio" id="nSocio" required>
             <br><br>
             <label for="password">Contraseña</label>    
             <input type="password" name="password" id="password" required>
@@ -44,6 +44,10 @@
                 <input type="text" name="apellidos" id="apellidos">
             </div>
             <div class="form-group">
+                <label for="dni">DNI</label>    
+                <input type="text" name="dni" id="dni">
+            </div>
+            <div class="form-group">
                 <label for="email">Correo electrónico</label>    
                 <br>
                 <input type="text" name="email" id="email">
@@ -57,6 +61,16 @@
                 <br>
                 <input type="number" name="telefono" id="telefono">
             </div>
+            <div class="form-group">
+                <label for="dir">Dirección</label>    
+                <br>
+                <input type="text" name="dir" id="dir">
+            </div>
+            <div class="form-group">
+                <label for="miembros">Número de miembros</label>    
+                <br>
+                <input type="text" name="miembros" id="miembros">
+            </div>
         </div>
     </div>    
     <div class="row">
@@ -69,8 +83,8 @@
                 <input type="time" id="hora" name="hora">
             </div>
             <div class="form-group">
-            <label for="tipo">Instalación</label>
-            <select id="tipo" name="tipo" required>
+            <label for="instalacion">Instalación</label>
+            <select id="instalacion" name="instalacion" required>
                 <option selected disabled>-- seleccione una opción --</option>
                 <option value="tenis">Tenis</option>
                 <option value="padel">Pádel</option>

@@ -14,7 +14,6 @@
     <header>
         <div class="container">
             <div id="branding">
-            <br /><br /><br />
             <?php include("./views/partials/mainmenu.php"); ?>
             <img class="logo" alt="logo" src="http://<?php echo $_SERVER['HTTP_HOST']?>/clubsocial/assets/img/logo.png"/>
             <h1><span class="highlight">ESTADÍSTICAS</span></h1>
