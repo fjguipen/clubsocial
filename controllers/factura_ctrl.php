@@ -26,13 +26,10 @@ foreach ($reservas as $resultado){
 // Incluimos la vista de factura
 include("./views/factura.php");
 
-//Incluimos la vista de reservas
-include("./views/reserva.php");
-
 } else {
 
 	if($_SERVER['REQUEST_METHOD'] == 'GET'){
-		include ('./views/home.php');
+		header("Location: ./");
 	}
     
 }

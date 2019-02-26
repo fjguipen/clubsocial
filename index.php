@@ -17,7 +17,10 @@
             break;
         case 'estadisticas':
             include("./controllers/estadisticas_ctrl.php");
-            break;    
+            break;  
+        case 'factura':
+            include("./controllers/factura_ctrl.php");  
+            break;
         default :
             include("./views/404.php");
             break;
