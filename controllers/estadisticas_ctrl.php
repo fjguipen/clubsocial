@@ -1,54 +1,22 @@
 <?php
+//Requerimiento de acceso a datos usuario.php y reserva.php.
+require_once(dirname(__FILE__).'/../models/reserva.php');
 
-/*
-    Mirar funcionamiento del controlador en lista_reservas_ctrl.php.
-    El funcionamiento de este controlador debería ser similar, proporcinando variables con los
-    datos necesarios que se utilizarán en la vista.
-*/
+if (isset($_SESSION["user"])){
 
-require './db/BD.php';
- Class Estadisticas_ctrl{
-    private $reservas;
+    //Obtenemos todas las reservas y la guardamos en la variable para que sea utilizala en la vista
+    $arrayReservas = Reserva::getReservaMes();
 
-    function __construct($objReserva){
-        $this->reservas=$objReserva;
-    }
+    //Preparamos el array donde incluiremos la informacion relevante de cada socio para la utilizar en la vista
+    $reservas = Array();
 
-    static function generarEstadisticas($instalaciones){ 
-        $informacion = Array();
-        foreach($instalaciones as $instalacion){
-            $id = $instalacion->id;
-            $name = $instalacion->nombre;
-
-            $sentencia="SELECT COUNT(*) FROM reservas
-                        WHERE id=$instalacion;";
-            $numReservas ->query($sentencia);
-           
-            array_push($informacion, Array("id"=>$id, "nommbre"=>$name,"reservas"=>$numReservas));
-       }
-       $recomendacion=calculaRecomendacion($informacion);
-       array_push($informacion, Array("id"=>$id, "nombre"=>$name,"reservas"=>$numReservas,"recomendacion"=>$recomendacion));
-            
-       return $informacion;
-
-       
-
-    }
-    
-    private static function calculaRecomendacion($informaciones){
-    
-        $numMax=0;
-        $name;
-        foreach( $informaciones as $informacion){
-            $numReservas=$informacion["reservas"];
-            if($numReservas > $numMax){
-                $numMax=$numReservas;
-                $name=$informacion["nombre"];
-            }
-        }
-
-        return $name;
-        }  
-    }
-    include ("./views/estadisticas.php");
+    foreach($arrayReservas as $reserva){
+		
+		array_push($reservas, Array($reserva->id, $reserva->fecha));
+	}
+} else {
+	
+	//No está logeado como admnistrado, mostramos la página de logeo
+	include(dirname(__FILE__)."/../views/login.php");
+}
 ?>

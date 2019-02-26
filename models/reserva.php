@@ -27,6 +27,10 @@ class Reserva{
 
     static function getReserva($id){
         $sentencia = "SELECT * FROM reservas WHERE num_reserva = $id";
+        $result = DB::query($sentencia);
+        
+        // Guardamos la consulta a la base de datos en la variable $result.
+        $result = mysqli_fetch_array($result, MYSQLI_ASSOC);
         // Devolvemos un objeto Reserva con los datos recojidos de la base de datos.
         return new Reserva(Usuario::getSocio($result['numero_socio']),Instalacion::getInstalacion($result ['id_instalacion']),$result['fecha'],$result['minutos'],$result['penalizacion'],$result['num_reserva']);
     }
@@ -80,5 +84,23 @@ class Reserva{
         $query = DB::query($sentencia); // Ejecuto la sentencia.
         $filas = $query->num_rows;  // Obtengo el numero de filas que devuelve la sentencia.
         return !$filas > 0; // Si el numero de columnas es mayor que 0 la instalacion no esta disponible y devolvemos un false.
+    }
+
+    function getReservasMes($mes,$anio){
+
+        $sentencia = "SELECT COUNT() FROM reservas WHERE  MONTH($mes) and YEAR($anio) GROUP BY id_instalacion"
+        $query = DB::query($sentencia); // Ejecuto la sentencia.
+        // Guardamos la consulta a la base de datos en la variable $result.
+        $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        
+        $arrayReservas = Array();   // Array que guarda los objetos Reserva que se van a extraer de la base de datos.
+
+        // Foreach para crear un objeto con cada fila extraida de las reservas y guardarlo en el Array.
+        foreach($result as $reserva) {
+           array_push($arrayReservas, new Reserva(Usuario::getSocio($reserva['numero_socio']),Instalacion::getInstalacion($reserva ['id_instalacion']),$reserva['fecha'],$reserva['minutos'],$reserva['penalizacion'],$reserva['num_reserva']));
+        }
+
+        return $arrayReservas;
+
     }
 }
