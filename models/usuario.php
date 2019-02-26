@@ -42,6 +42,7 @@ class Usuario {
     
     static function getSocio($id) {
         $sentencia = "SELECT * FROM socios WHERE numero_socio = $id";
+
         //mysqli_fetch_array devuelve la primera fila de la consulta sql
         $result = mysqli_fetch_array(DB::query($sentencia), MYSQLI_ASSOC);
 
@@ -51,6 +52,7 @@ class Usuario {
 
     static function getSocios() {
         $sentencia = "SELECT * FROM socios";
+        
         //Extraemos los datos del resultado de consulta sql en un array asociativo
         $result = mysqli_fetch_all(DB::query($sentencia), MYSQLI_ASSOC);
         $socios = Array();

@@ -20,12 +20,14 @@ class Instalacion{
     }
 
     static function getInstalacion($id){
+
         $sentencia = "SELECT * FROM instalaciones WHERE id_instalacion = $id";
         
         $result = mysqli_fetch_array(DB::query($sentencia), MYSQLI_ASSOC);
 
-        //Debe devolver un objeto de tipo Usuario
+        //Debe devolver un objeto de tipo Instalacion
         return new Instalacion($result["id_instalacion"],$result["nombre"],$result["precio"],$result["tiempo"]);
+        
     }
 }
 ?>
