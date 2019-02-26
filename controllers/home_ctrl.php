@@ -10,19 +10,17 @@ require_once(dirname(__FILE__).'/../models/instalacion.php');
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 	
-
-
-	//Asignación de variables recogida de los campos del formulario del Socio.
+	
 	$idSocio = htmlspecialchars($_POST['nSocio']);
 	$password = htmlspecialchars($_POST['password']);
 	$nuevoSocio = isset($_POST['newSocio']);
 
-	//Asignación de variables recogida de los campos del formulario de Reserva.
+	
 	$idInstalacion = htmlspecialchars($_POST['instalacion']);
 	$fechaReserva = htmlspecialchars($_POST['fecha']);
 	$horaReserva = htmlspecialchars($_POST['hora']);
 
-	//Control de Reserva: 
+	$respuesta = "";
 
 	if ($nuevoSocio) {
 
@@ -35,14 +33,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 		$dir = htmlspecialchars($_POST['dir']);
 		$miembros = htmlspecialchars($_POST['miembros']);
 
-		//crea socio
-
 		$socio = Usuario::darDeAlta($nombre,$apellidos,$dir,$email,$dni,$cc,$telefono,$miembros,$password);
 
 	} else {
 		$socio = Usuario::getSocio($idSocio);
 		if ($socio->getPassword($idSocio) != $password){
-			echo "La contraseña es incorrecta.";
+			$respuesta = "La contraseña es incorrecta.";
 			$socio = null;
 		}
 	}
@@ -52,33 +48,30 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 		$reserva = new Reserva($socio, Instalacion::getInstalacion($idInstalacion), $fechaReserva, $horaReserva);
 		
 		if($reserva->instalacionDisponible()){
-			/*
+			
 			if ($reserva->confirmarReserva()){
-				echo "cofirmada";
+				$respuesta = "Reserva cofirmada para el socio nº $socio->id";
 			} else {
-				echo "Error insert";
+				$respuesta = "Se ha producido un error, por favor, inténtelo más tarde.";
 			}
-			*/
-
-			$reserva->confirmarReserva();
 			
 		} else {
-			echo "Instalacion no disponible";
+			$respuesta =  "La instalación no está disponible en esa fecha";
 		}
+	} else {
+		$respuesta = "Hubo un error al crear el socio";
 	}
+
+	include('./views/confirmacion_reserva.php');
 
 } else {
 
-	//if($_SERVER['REQUEST_METHOD'] == 'GET'){
+	if($_SERVER['REQUEST_METHOD'] == 'GET'){
 
 		$instalaciones = Instalacion::getInstalaciones();
 
-		include ('./views/home.php');
-	//}
+		include('./views/home.php');
+	}
 	
 }
-
-// Si no es un POST te muestra el archivo home.php que es el inicial.
-
-
 ?>

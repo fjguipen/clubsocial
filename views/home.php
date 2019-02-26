@@ -19,7 +19,7 @@
     </header>
 <div class="container">
         <!-- FORMULARIO -->
-        <form action="./controllers/home_ctrl.php" method="POST">
+        <form action="./" method="POST">
         <div class="row">
         <div class="form-group">
             <label for="nSocio">Número de socio</label>  

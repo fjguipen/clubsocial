@@ -81,10 +81,9 @@ class Reserva{
     }
 
     function confirmarReserva(){
-        $socio = $this->socio->id;
-        $instalacion = $this->instalacion->id;
-        $hora = "'".$this->minutos . ":00"."'";
-        $sentencia = "INSERT INTO reservas(numero_socio,id_instalacion,fecha,minutos,penalizacion) VALUES($socio,$instalacion,$this->fecha,$hora,$this->penalizacion )";  //Sentencia para insertar la reserva en la base de datos.
+        $idSocio = $this->socio->id;
+        $idInstalacion = $this->instalacion->id;
+        $sentencia = "INSERT INTO reservas(numero_socio,id_instalacion,fecha,minutos,penalizacion) VALUES($idSocio,$idInstalacion,'$this->fecha','$this->minutos',false)";  //Sentencia para insertar la reserva en la base de datos.
         
 
         return DB::query($sentencia);
@@ -97,12 +96,10 @@ class Reserva{
     }
 
     function instalacionDisponible(){
-        $hora = "'".$this->minutos . ":00"."'";
         $idInstalacion = $this->instalacion->id;    // Extraemos el ID de la instalacion que queremos comprobar si esta reservada o no.
-        $sentencia = "SELECT * FROM reservas WHERE id_instalacion=$idInstalacion AND fecha='$this->fecha' AND minutos=$hora";
+        $sentencia = "SELECT * FROM reservas WHERE id_instalacion=$idInstalacion AND fecha='$this->fecha' AND minutos='$this->minutos'";
         $query = DB::query($sentencia); // Ejecuto la sentencia.
         $filas = $query->num_rows;  // Obtengo el numero de filas que devuelve la sentencia.
-        echo $filas;
         return !$filas > 0; // Si el numero de columnas es mayor que 0 la instalacion no esta disponible y devolvemos un false.
     }
 
