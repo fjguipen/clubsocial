@@ -31,7 +31,7 @@
         </div>
     </div>
     <label for="newSocio" class="medium">Registrar nuevo socio</label>
-    <input type="checkbox" id="newClient" name="newSocio" value="nuevoCliente">
+    <input type="checkbox" id="newSocio" name="newSocio" value="nuevoCliente">
     <div class="newClientData">
         <div class="row">
             <div class="form-group">
