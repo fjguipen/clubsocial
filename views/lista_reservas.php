@@ -57,12 +57,13 @@
                 <?php } ?>
                 
         </div>
+        <div class="tabla2">
         <!--Planificación de filas para tabla 2-->
-        <div class="row_table">
+        <div class="row_table2">
         <!---->
         <div class="col-md-3 col-center titulo"> Nº de Socio </div>
         <div class="col-md-3 col-center titulo"> DNI </div>
-        <div class="col-md-3 col-center titulo"> Nº Total de Reservas Mensuales </div>
+        <div class="col-md-3 col-center titulo"> Total de Reservas </div>
         <div class="col-md-3 col-center titulo"> Generar factura </div>
         </div>
         <?php 
@@ -79,17 +80,30 @@
             //$reservas = Reserva::getReservasSocio();
             foreach($socios as $socio){?>
             <!--Planificación de resto de filas para tabla 2-->
-            <div class="row_table">  
+            <div class="row_table2">  
                 <!--Obtención de datos del socio correspondiente
                 Nº Socio | DNI de Socio | Nº total de Reservas Mensuales -->
                     <div class="col-md-3 col-center"> <?php echo $socio[0]?></div>
                     <div class="col-md-3 col-center"> <?php echo $socio[1]?></div>
                     <div class="col-md-3 col-center"> <?php echo $socio[2]?></div> 
-                    <div class="form-group col-md-3 col-center">
-                        <input type="submit" class="form-control col-center" value="Generar">    
-                    </div> 
+                    <?php 
+                        if ($socio[2] != 0) { ?>
+                            <form onsubmit="getFactura(event)" class="form-group col-md-3 col-center-boton" action="./controllers/factura_ctrl.php" method="POST">
+                                <input type="submit" class="form-control col-center-boton" value="Generar">
+                                <input name="nSocio" type="text" value="<?php echo $socio[0]?>" hidden>                     
+                            </form> 
+                        <?php }else { ?>
+                            <form onsubmit="getFactura(event)" class="form-group col-md-3 col-center-boton" action="./controllers/factura_ctrl.php" method="POST">
+                                <input type="submit" class="form-control col-center-boton" value="Generar" disabled>
+                                <input name="nSocio" type="text" value="<?php echo $socio[0]?>" hidden>                     
+                            </form> 
+                        <?php }
+                    ?>
             </div>             
             <?php } ?>
+        
+        </div>
+        
             
     </div>
 </body>

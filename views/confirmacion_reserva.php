@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<title>Cub Social EUSA</title>
+<title>Club Social EUSA</title>
     <?php include('./views/partials/head_links.php') ?>
 </head>
 
