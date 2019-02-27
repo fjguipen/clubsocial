@@ -18,7 +18,7 @@
     </header>
 <div class="container">
         <!-- FORMULARIO -->
-        <form id="nueva-reserva" action="wddqw" method="POST" onsubmit="submitForm(event)">
+        <form id="nueva-reserva" action="./controllers/home_ctrl.php" method="POST" onsubmit="submitForm(event)">
         <div class="row">
         <div class="form-group">
             <label for="nSocio">Número de socio</label>  
