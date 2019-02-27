@@ -18,7 +18,7 @@
     </header>
 <div class="container">
         <!-- FORMULARIO -->
-        <form action="./" method="POST">
+        <form id="nueva-reserva" action="wddqw" method="POST" onsubmit="submitForm(event)">
         <div class="row">
         <div class="form-group">
             <label for="nSocio">Número de socio</label>  
