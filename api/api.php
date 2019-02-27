@@ -10,9 +10,9 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $respuesta = "";
     switch ($action){
 
-        case "registrar":
-
-        $password = htmlspecialchars($_POST['password']);
+		case "registrar":
+		
+		$newpassword = htmlspecialchars($_POST['newpassword']);
         $nombre = htmlspecialchars($_POST['nombre']);
 		$apellidos = htmlspecialchars($_POST['apellidos']);
 		$dni = htmlspecialchars($_POST['dni']);
@@ -22,7 +22,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 		$dir = htmlspecialchars($_POST['dir']);
 		$miembros = htmlspecialchars($_POST['miembros']);
 
-        $socio = Usuario::darDeAlta($nombre,$apellidos,$dir,$email,$dni,$cc,$telefono,$miembros,$password);
+        $socio = Usuario::darDeAlta($nombre,$apellidos,$dir,$email,$dni,$cc,$telefono,$miembros,$newpassword);
         
         echo $socio ? reservar($socio) : "No se ha podido dar de alta, puede que el socio ya exista";
 
