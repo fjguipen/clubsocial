@@ -43,6 +43,10 @@
                 <input type="text" name="apellidos" id="apellidos">
             </div>
             <div class="form-group">
+                <label for="password">Contraseña</label>    
+                <input type="password" name="password" id="newPassword" required>
+            </div>
+            <div class="form-group">
                 <label for="dni">DNI</label>    
                 <input type="text" name="dni" id="dni">
             </div>
