@@ -87,7 +87,7 @@
                     <div class="col-md-3 col-center"> <?php echo $socio[1]?></div>
                     <div class="col-md-3 col-center"> <?php echo $socio[2]?></div> 
                     <?php 
-                        if (socio[2] != 0) { ?>
+                        if ($socio[2] != 0) { ?>
                             <form onsubmit="getFactura(event)" class="form-group col-md-3 col-center-boton" action="./controllers/factura_ctrl.php" method="POST">
                                 <input type="submit" class="form-control col-center-boton" value="Generar">
                                 <input name="nSocio" type="text" value="<?php echo $socio[0]?>" hidden>                     
