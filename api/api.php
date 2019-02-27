@@ -42,8 +42,37 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
         echo $socio ? reservar($socio) : "nose ha podido reservar";
 
-        break;
+		break;
+		
+		case "factura":
 
+		$idSocio = htmlspecialchars($_POST['nSocio']);
+
+		$reservas = Reserva::getReservasSocioMes($idSocio, '02', '2019'); 
+		
+		$nombreSocio = $reservas[0]->socio->nombre; // Sacamos el nombre del socio
+		$dniSocio = $reservas[0]->socio->dni;   // Sacamos el dni del socio
+		
+		//Array para almacenar el nombre y el dni del socio
+		$datosSocio = Array("nombre"=>$nombreSocio, "dni"=>$dniSocio);
+		
+		// Array que contendra el resultado que usara la vista
+		$contenido = Array();  
+		
+		// Array para almacenar todas las reservas de ese usuario.
+		$datosReservas = Array();
+		
+		foreach ($reservas as $resultado){
+			// Vamos añadiendo en el array los datos que necesitamos para mostrar despues en la vista.
+			array_push($datosReservas, Array($resultado->instalacion->nombre,$resultado->instalacion->precio, $resultado->fecha));
+		}
+		
+		// Metemos el array socio y reservas dentro de contenido.
+		$contenido["socio"]=$datosSocio;
+		$contenido["reservas"]=$datosReservas;
+
+		echo json_encode($contenido);
+		break;
         default:
             header("Location: /clubsocial");
         break;

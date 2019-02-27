@@ -20,7 +20,7 @@
         <!-- FORMULARIO -->
         <form id="nueva-reserva" action="./controllers/home_ctrl.php" method="POST" onsubmit="submitForm(event)">
         <div class="row">
-        <div class="form-group">
+        <div id="form1" class="form-group">
             <label for="nSocio">Número de socio</label>  
             <br>  
             <input type="text" name="nSocio" id="nSocio" required>
@@ -30,8 +30,8 @@
         </div>
     </div>
     <label for="newSocio" class="medium">Registrar nuevo socio</label>
-    <input type="checkbox" id="newSocio" name="newSocio" value="nuevoCliente">
-    <div class="newClientData">
+    <input type="checkbox" id="newSocio" name="newSocio" value="nuevoCliente" onchange="alfalfa()">
+    <div class="newClientData" id="form2">
         <div class="row">
             <div class="form-group">
                 <label for="nombre">Nombre</label>    
