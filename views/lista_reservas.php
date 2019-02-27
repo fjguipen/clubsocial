@@ -61,7 +61,7 @@
         <div class="row_table">
         <!---->
         <div class="col-md-4 col-center"> Nº de Socio </div>
-        <div class="col-md-4 col-center"> Nombre y Apellido </div>
+        <div class="col-md-4 col-center"> DNI </div>
         <div class="col-md-4 col-center"> Nº Total de Reservas Mensuales </div>
         </div>
         <?php 
@@ -80,7 +80,7 @@
             <!--Planificación de resto de filas para tabla 2-->
             <div class="row_table">  
                 <!--Obtención de datos del socio correspondiente
-                Nº Socio | Nombre de Socio | Apellido de Socio | Nº total de Reservas Mensuales -->
+                Nº Socio | DNI de Socio | Nº total de Reservas Mensuales -->
                     <div class="col-md-4 col-center"> <?php echo $socio[0]?></div>
                     <div class="col-md-4 col-center"> <?php echo $socio[1]?></div>
                     <div class="col-md-4 col-center"> <?php echo $socio[2]?></div>  
