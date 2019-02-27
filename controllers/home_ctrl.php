@@ -9,10 +9,6 @@ require_once(dirname(__FILE__).'/../models/instalacion.php');
 //Validación del método POST.
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
-	
-	
-	$idSocio = htmlspecialchars($_POST['nSocio']);
-	$password = htmlspecialchars($_POST['password']);
 	$nuevoSocio = isset($_POST['newSocio']);
 
 	
@@ -27,15 +23,18 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 		$nombre = htmlspecialchars($_POST['nombre']);
 		$apellidos = htmlspecialchars($_POST['apellidos']);
 		$dni = htmlspecialchars($_POST['dni']);
+		$newpassword = htmlspecialchars($_POST['newpassword']);
 		$email = htmlspecialchars($_POST['email']);
 		$cc = htmlspecialchars($_POST['cc']);
 		$telefono = htmlspecialchars($_POST['telefono']);
 		$dir = htmlspecialchars($_POST['dir']);
 		$miembros = htmlspecialchars($_POST['miembros']);
 
-		$socio = Usuario::darDeAlta($nombre,$apellidos,$dir,$email,$dni,$cc,$telefono,$miembros,$password);
+		$socio = Usuario::darDeAlta($nombre,$apellidos,$dir,$email,$dni,$cc,$telefono,$miembros,$newpassword);
 
 	} else {
+		$idSocio = htmlspecialchars($_POST['nSocio']);
+		$password = htmlspecialchars($_POST['password']);
 		$socio = Usuario::getSocio($idSocio);
 
 		if (!$socio || $socio->getPassword($idSocio) != $password){

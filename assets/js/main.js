@@ -1,9 +1,12 @@
 /* enviar datos del formulario - Nueva Reserva */
 function submitForm(event){
     event.preventDefault();
+        let newSocio=document.getElementById("newSocio").checked;
+
+        let action=newSocio?"registrar":"reservar";
         /* variable con todoslos datos del formulario */
         let data = new FormData(document.getElementById("nueva-reserva"));
-        data.append("action", "reservar");
+        data.append("action", action);
 
         /* enviar mensaje (header/body) al archivo y leer su respuesta */
         fetch('http://localhost/clubsocial/api/api.php ', {method: 'POST', body: data})
