@@ -93,8 +93,8 @@
                                 <input name="nSocio" type="text" value="<?php echo $socio[0]?>" hidden>                     
                             </form> 
                         <?php }else { ?>
-                            <form onsubmit="getFactura(event)" class="form-group col-md-3 col-center-boton" action="./controllers/factura_ctrl.php" method="POST" disable>
-                                <input type="submit" class="form-control col-center-boton" value="Generar">
+                            <form onsubmit="getFactura(event)" class="form-group col-md-3 col-center-boton" action="./controllers/factura_ctrl.php" method="POST">
+                                <input type="submit" class="form-control col-center-boton" value="Generar" disabled>
                                 <input name="nSocio" type="text" value="<?php echo $socio[0]?>" hidden>                     
                             </form> 
                         <?php }
