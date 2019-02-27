@@ -44,7 +44,7 @@
             </div>
             <div class="form-group">
                 <label for="newpassword">Contraseña</label>    
-                <input type="newpassword" name=" newpassword" id="newpassword">
+                <input type="password" name=" newpassword" id="newpassword">
             </div>
             <div class="form-group">
                 <label for="dni">DNI</label>    
