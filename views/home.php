@@ -93,7 +93,7 @@
             </select>
             </div>        
         </div> 
-        <div class="form-group">
+        <div class="form-group-boton">
             <input type="submit" class="form-control" value="Entrar">    
         </div>
         </form>
