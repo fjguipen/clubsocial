@@ -40,16 +40,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 			$socio = null;
 		}
 
-        echo $socio ? reservar($socio) : $respuesta == "" ? "El socio no existe" : "La contraseña no es válida";
+        echo $socio ? reservar($socio) : "nose ha podido reservar";
 
         break;
 
         default:
-            
+            header("Location: /clubsocial");
         break;
     }
 } else {
-    //header("Location: /clubsocial");
+    header("Location: /clubsocial");
 }
 
 
