@@ -57,8 +57,9 @@
                 <?php } ?>
                 
         </div>
+        <div class="tabla2">
         <!--Planificación de filas para tabla 2-->
-        <div class="row_table">
+        <div class="row_table2">
         <!---->
         <div class="col-md-3 col-center titulo"> Nº de Socio </div>
         <div class="col-md-3 col-center titulo"> DNI </div>
@@ -79,7 +80,7 @@
             //$reservas = Reserva::getReservasSocio();
             foreach($socios as $socio){?>
             <!--Planificación de resto de filas para tabla 2-->
-            <div class="row_table">  
+            <div class="row_table2">  
                 <!--Obtención de datos del socio correspondiente
                 Nº Socio | DNI de Socio | Nº total de Reservas Mensuales -->
                     <div class="col-md-3 col-center"> <?php echo $socio[0]?></div>
@@ -91,6 +92,9 @@
                     </form> 
             </div>             
             <?php } ?>
+        
+        </div>
+        
             
     </div>
 </body>

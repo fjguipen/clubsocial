@@ -16,9 +16,8 @@ body{
 }
   
 .logo{
-  height: 8%;
+  margin-top: -10px;
   width: 8%;
-  vertical-align: middle;
   float:left;
   padding-right: 1px;
 }
@@ -53,6 +52,8 @@ header li{
   
   header #branding{
     float:left;
+    margin-top: 10px;
+    margin-bottom: 25px;
   }
   
   header #branding h1{
@@ -64,7 +65,7 @@ header li{
   
   header nav{
     float:right;
-    padding-top:1.5%;
+    padding-top:25px;
   }
   
   header .highlight, header .current a{
@@ -123,11 +124,20 @@ header li{
   display: -webkit-flex;
   flex-flow: row wrap;
   margin: auto;
+  border: 1px solid gray;
+  border-radius: 10px;
+  padding-bottom: 20px;
   background-color: rgba(255, 255, 255, 1);
 }
 
-.form-control{
-  width: 125px;
+.row_table2{
+  display: flex;
+  display: -webkit-flex;
+  flex-flow: row wrap;
+  margin: auto;
+  border: 1px solid gray;
+  border-radius: 10px;
+  background-color: rgba(255, 255, 255, 1);
 }
 
 .col-center{
@@ -157,9 +167,14 @@ header li{
   margin-bottom: 20px;
 }
 
+.tabla2 {
+  margin-bottom: 100px;
+}
+
 .form-group{
   padding-left:22px;
   padding-right:22px;
+  text-align: center;
 
 }
 
