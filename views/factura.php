@@ -14,7 +14,10 @@
                 </div>
             </div>
     </header>
-        <div class="container">
+        <div class="container" style="background-color:white;">
+        <pre>
+            <?php print_r($contenido); ?>
+        </pre>
             
         </div>
 </body>
