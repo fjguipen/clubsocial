@@ -134,6 +134,13 @@ header li{
   float: none;
   margin: 0 auto;
   text-align: center;
+  padding-top: 25px;
+}
+
+.col-center-boton{
+  float: none;
+  margin: 0 auto;
+  text-align: center;
 }
 
 .col-md-2,.col-md-3{
@@ -143,6 +150,7 @@ header li{
 .titulo{
   font-weight: bold;
   font-size: 18px;
+  margin-bottom: 15px;
 }
 
 .tabla{
