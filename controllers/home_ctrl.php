@@ -44,7 +44,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 		}
 	}
 
-	//Aqui $socio tiene un soci
+	//Aqui $socio tiene un socio
 	if($socio){
 		$reserva = new Reserva($socio, Instalacion::getInstalacion($idInstalacion), $fechaReserva, $horaReserva);
 		
