@@ -8,6 +8,7 @@ if($_SERVER['RESQUEST_METHOD'] == 'POST'){
     $action = htmlspecialchars($_POST["action"]);
 
     switch ($action){
+
         case "registrar":
 
         $password = htmlspecialchars($_POST['password']);
@@ -22,23 +23,26 @@ if($_SERVER['RESQUEST_METHOD'] == 'POST'){
 
         $socio = Usuario::darDeAlta($nombre,$apellidos,$dir,$email,$dni,$cc,$telefono,$miembros,$password);
         
-        echo reservar($socio);
+        echo $socio ? reservar($socio) : "No se ha podido dar de alta, puede que el socio ya exista";
 
         break;
+
         case "reservar":
 
         $idSocio = htmlspecialchars($_POST['nSocio']);
 	    $password = htmlspecialchars($_POST['password']);
         
         $socio = Usuario::getSocio($idSocio);
-            if ($socio->getPassword($idSocio) != $password){
-                $respuesta = "La contraseña es incorrecta.";
-                $socio = null;
-            }
 
-            echo reservar($socio);
+		if (!$socio || $socio->getPassword($idSocio) != $password){
+			$respuesta = "La contraseña es incorrecta.";
+			$socio = null;
+		}
+
+        echo $socio ? reservar($socio) : "El socio no existe";
 
         break;
+
         default:
             
         break;

@@ -37,7 +37,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 	} else {
 		$socio = Usuario::getSocio($idSocio);
-		if ($socio->getPassword($idSocio) != $password){
+
+		if (!$socio || $socio->getPassword($idSocio) != $password){
 			$respuesta = "La contraseña es incorrecta.";
 			$socio = null;
 		}
@@ -59,7 +60,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 			$respuesta =  "La instalación no está disponible en esa fecha";
 		}
 	} else {
-		$respuesta = "Hubo un error al crear el socio";
+		$respuesta = "Hubo un error al crear el socio, puede ya exista";
 	}
 
 	include('./views/confirmacion_reserva.php');

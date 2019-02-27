@@ -36,16 +36,21 @@ class Usuario {
     static function darDeAlta($nombre,$apellidos,$dir,$email,$dni,$cc,$telefono,$miembros,$password) {
         //Las contraseñas nunca se guardan tal cual en la base de datos, deberían guardarse encriptadas
         $sentencia = "INSERT INTO socios(nombre,ape,dir,email,dni,cc,telefono,miembros,password) VALUES ('$nombre','$apellidos','$dir','$email','$dni','$cc','$telefono','$miembros','$password')";
-        $sqlResult = DB::query($sentencia);
+        $bydni = "SELECT * FROM socios WHERE dni = '$dni'";
+
+        $sqlResult = null;
+
+        if(DB::query($bydni)->num_rows == 0){
+            $sqlResult = DB::query($sentencia);
+        }
         
         if(!$sqlResult){
             return false;
         }
 
-        $sentencia = "SELECT * FROM socios WHERE dni = '$dni'";
-        
+              
         //mysqli_fetch_array devuelve la primera fila de la consulta sql
-        $result = mysqli_fetch_array(DB::query($sentencia), MYSQLI_ASSOC);
+        $result = mysqli_fetch_array(DB::query($bydni), MYSQLI_ASSOC);
 
         //Debe devolver un objeto de tipo Usuario
         return new Usuario($result["numero_socio"],$result["dni"],$result["nombre"],$result["ape"],$result["dir"],$result["email"],$result["password"],$result["cc"],$result["telefono"],$result["miembros"]);
@@ -56,7 +61,9 @@ class Usuario {
 
         //mysqli_fetch_array devuelve la primera fila de la consulta sql
         $result = mysqli_fetch_array(DB::query($sentencia), MYSQLI_ASSOC);
-
+        if(!$result){
+            return null;
+        }
         //Debe devolver un objeto de tipo Usuario
         return new Usuario($result["numero_socio"],$result["dni"],$result["nombre"],$result["ape"],$result["dir"],$result["email"],$result["password"],$result["cc"],$result["telefono"],$result["miembros"]);
     }
