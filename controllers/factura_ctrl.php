@@ -1,20 +1,23 @@
 <?php
-//Requerimiento de acceso a datos factura.php.
+// Requerimiento de acceso a datos factura.php.
 require_once(dirname(__FILE__).'/../models/reserva.php');
 require_once(dirname(__FILE__).'/../models/usuario.php');
 
-//Validación del método POST.
+// Validación del método POST.
 if ($_SERVER['REQUEST_METHOD'] === 'POST'){
 
-//Asignación de variables recogida de los campos del formulario 
+// Asignación de variables recogida de los campos del formulario 
 $idSocio = htmlspecialchars($_POST['nSocio']);
-$mes = htmlspecialchars($_POST['mes']);
-$anio = htmlspecialchars($_POST['anio']);
+// $mes = htmlspecialchars($_POST['mes']);
+// $anio = htmlspecialchars($_POST['anio']);
 
-$reservas = Reserva::getReservasSocioMes($idSocio, $mes, $anio); 
+// $reservas = Reserva::getReservasSocioMes($idSocio, $mes, $anio); 
+$reservas = Reserva::getReservasSocioMes($idSocio, '02', '2019'); 
 
 $nombreSocio = $reservas[0]->socio->nombre; // Sacamos el nombre del socio
 $dniSocio = $reservas[0]->socio->dni;   // Sacamos el dni del socio
+// $nombreSocio = 'Salvador';
+// $dniSocio = '32040301T';
 
 /*
 contenido [
@@ -49,7 +52,7 @@ array_push($contenido, $datosSocio, $datosReservas);
 include("./views/factura.php");
 
 } else {
-
+	
 	if($_SERVER['REQUEST_METHOD'] == 'GET'){
 		header("Location: ./");
 	}
