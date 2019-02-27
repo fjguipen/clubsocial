@@ -15,6 +15,7 @@ $reservas = Reserva::getReservasSocioMes($idSocio, $mes, $anio);
 
 $nombreSocio = $reservas[0]->socio->nombre; // Sacamos el nombre del socio
 $dniSocio = $reservas[0]->socio->dni;   // Sacamos el dni del socio
+
 /*
 contenido [
 	$datosSocio [
