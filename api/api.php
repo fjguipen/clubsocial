@@ -7,7 +7,7 @@ require_once(dirname(__FILE__).'/../models/reserva.php');
 
 if($_SERVER['REQUEST_METHOD'] == 'POST'){
     $action = htmlspecialchars($_POST["action"]);
-
+    $respuesta = "";
     switch ($action){
 
         case "registrar":
@@ -40,16 +40,16 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 			$socio = null;
 		}
 
-        echo $socio ? reservar($socio) : "El socio no existe";
+        echo $socio ? reservar($socio) : "nose ha podido reservar";
 
         break;
 
         default:
-            
+            header("Location: /clubsocial");
         break;
     }
 } else {
-    //header("Location: /clubsocial");
+    header("Location: /clubsocial");
 }
 
 
