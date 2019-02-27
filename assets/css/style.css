@@ -125,12 +125,15 @@ header li{
   flex-flow: row wrap;
   margin: auto;
   text-align: right ;
-  margin-bottom:20px;
   background-color: rgba(255, 255, 255, 1);
 }
 
 .col-md-2,.col-md-4{
   color:black;
+}
+
+.tabla{
+  margin-bottom: 20px;
 }
 
 .form-group{
@@ -171,7 +174,7 @@ header li{
   display: none;
 
 }
-#newClient:checked + .newClientData{
+#newSocio:checked + .newClientData{
   display: block;
 }
 

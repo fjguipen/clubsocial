@@ -2,8 +2,7 @@
 <html lang="es">
 <head>
 <title>Cub Social EUSA</title>
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-<link rel="stylesheet" href="http://<?php echo $_SERVER['HTTP_HOST']?>/clubsocial/assets/css/style.css">
+    <?php include('./views/partials/head_links.php') ?>
 </head>
 
 <body>
@@ -19,7 +18,7 @@
     </header>
 <div class="container">
         <!-- FORMULARIO -->
-        <form action="./controllers/home_ctrl.php" method="POST">
+        <form action="./" method="POST">
         <div class="row">
         <div class="form-group">
             <label for="nSocio">Número de socio</label>  
@@ -31,7 +30,7 @@
         </div>
     </div>
     <label for="newSocio" class="medium">Registrar nuevo socio</label>
-    <input type="checkbox" id="newClient" name="newSocio" value="nuevoCliente">
+    <input type="checkbox" id="newSocio" name="newSocio" value="nuevoCliente">
     <div class="newClientData">
         <div class="row">
             <div class="form-group">
@@ -86,9 +85,11 @@
             <label for="instalacion">Instalación</label>
             <select id="instalacion" name="instalacion" required>
                 <option selected disabled>-- seleccione una opción --</option>
-                <option value="tenis">Tenis</option>
-                <option value="padel">Pádel</option>
-                <option value="futbol">Fútbol</option>
+                <?php
+                    foreach($instalaciones as $instalacion){?>
+                        <option value="<?php echo $instalacion->id?>"><?php echo $instalacion->nombre?></option>;
+                    <?php } 
+                ?>
             </select>
             </div>        
         </div> 

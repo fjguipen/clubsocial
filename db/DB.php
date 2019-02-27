@@ -13,9 +13,14 @@ class DB{
         //Abro Conexion
         $conexion=mysqli_connect(self::$server, self::$user, self::$password, self::$dbName);
         //ejecuto sentencia MariaDB
-        $resultado = mysqli_query( $conexion,$sentencia);
+        $resultado = mysqli_query( $conexion,$sentencia);// or die(mysqli_error($conexion));
         //Cierro Conexion
+        if(!$resultado){
+            echo mysqli_error($conexion);
+        }
+        
         mysqli_close($conexion);
+        
 
         //Devuelvo resultado OBTENIDO de la SENTENCIA dada
         return $resultado;

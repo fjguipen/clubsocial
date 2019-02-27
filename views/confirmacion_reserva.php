@@ -1,6 +1,3 @@
-<?php
-    header("HTTP/1.0 404 Not Found");
-?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -20,9 +17,8 @@
 </div>
     </header>
 <div class="container">
-        <!-- FORMULARIO -->
-        <br><br><br><br><br>
-        <h1 style="color:white">Error 404. Página no encontrada</h1>
+    <h2 style="color:white;"><?php  echo $respuesta ?></h2>
+    <a style="color:white;margin-top:10px;" href="http://<?php echo $_SERVER["HTTP_HOST"]."/clubsocial" ?>">Volver</a>
 </div>
 </body>
 </html>
