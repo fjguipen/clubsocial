@@ -49,7 +49,7 @@ foreach ($reservas as $resultado){
 array_push($contenido, $datosSocio, $datosReservas);
 
 // Incluimos la vista de factura
-include("../views/factura.php");
+include(dirname(__FILE__)."/../views/factura.php");
 
 } else {
 	
