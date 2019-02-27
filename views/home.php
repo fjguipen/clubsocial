@@ -23,10 +23,10 @@
         <div id="form1" class="form-group">
             <label for="nSocio">Número de socio</label>  
             <br>  
-            <input type="text" name="nSocio" id="nSocio" required>
+            <input type="text" name="nSocio" id="nSocio">
             <br><br>
             <label for="password">Contraseña</label>    
-            <input type="password" name="password" id="password" required>
+            <input type="password" name="password" id="password">
         </div>
     </div>
     <label for="newSocio" class="medium">Registrar nuevo socio</label>
@@ -43,8 +43,8 @@
                 <input type="text" name="apellidos" id="apellidos">
             </div>
             <div class="form-group">
-                <label for="password">Contraseña</label>    
-                <input type="password" name="password" id="newPassword" required>
+                <label for="newpassword">Contraseña</label>    
+                <input type="newpassword" name=" newpassword" id="newpassword">
             </div>
             <div class="form-group">
                 <label for="dni">DNI</label>    

@@ -32,15 +32,15 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
         $idSocio = htmlspecialchars($_POST['nSocio']);
 	    $password = htmlspecialchars($_POST['password']);
-        
+		
         $socio = Usuario::getSocio($idSocio);
 
-		if (!$socio || $socio->getPassword($idSocio) != $password){
+		if ( !$socio || $socio->getPassword($idSocio) != $password){
 			$respuesta = "La contraseña es incorrecta.";
 			$socio = null;
 		}
-
-        echo $socio ? reservar($socio) : "nose ha podido reservar";
+		
+		echo $socio ? reservar($socio) : "No se ha podido reservar";
 
 		break;
 		
