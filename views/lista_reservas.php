@@ -21,11 +21,11 @@
         <div class="tabla">
             <div class="row_table">
                 <!--Fila 1 con datos por columnas => Nº Reserva | Nº Socio | Tipo de Reserva | Fecha | Hora-->
-                <div class="col-md-2"> Nº Reserva </div>
-                <div class="col-md-2"> Nº Socio </div>
-                <div class="col-md-2"> Instalacion </div>
-                <div class="col-md-2"> Fecha </div>
-                <div class="col-md-2"> Hora </div>
+                <div class="col-md-2 col-center"> Nº Reserva </div>
+                <div class="col-md-2 col-center"> Nº Socio </div>
+                <div class="col-md-2 col-center"> Instalacion </div>
+                <div class="col-md-2 col-center"> Fecha </div>
+                <div class="col-md-2 col-center"> Hora </div>
             </div>
                 <?php
 
@@ -48,11 +48,11 @@
 
 
                     Nº Reserva | Nº Socio | Tipo de Instalación | Fecha | Hora -->
-                        <div class="col-md-2"> <?php echo $reserva->id?></div>
-                        <div class="col-md-2"> <?php echo $reserva->socio->id?></div>
-                        <div class="col-md-2"> <?php echo $reserva->instalacion->id?></div>
-                        <div class="col-md-2"> <?php echo $reserva->fecha?></div>
-                        <div class="col-md-2"> <?php echo $reserva->minutos?></div>
+                        <div class="col-md-2 col-center"> <?php echo $reserva->id?></div>
+                        <div class="col-md-2 col-center"> <?php echo $reserva->socio->id?></div>
+                        <div class="col-md-2 col-center"> <?php echo $reserva->instalacion->id?></div>
+                        <div class="col-md-2 col-center"> <?php echo $reserva->fecha?></div>
+                        <div class="col-md-2 col-center"> <?php echo $reserva->minutos?></div>
                 </div>        
                 <?php } ?>
                 
@@ -60,9 +60,9 @@
         <!--Planificación de filas para tabla 2-->
         <div class="row_table">
         <!---->
-        <div class="col-md-4"> Nº de Socio </div>
-        <div class="col-md-4"> Nombre y Apellido </div>
-        <div class="col-md-4"> Nº Total de Reservas Mensuales </div>
+        <div class="col-md-4 col-center"> Nº de Socio </div>
+        <div class="col-md-4 col-center"> Nombre y Apellido </div>
+        <div class="col-md-4 col-center"> Nº Total de Reservas Mensuales </div>
         </div>
         <?php 
 
@@ -81,9 +81,9 @@
             <div class="row_table">  
                 <!--Obtención de datos del socio correspondiente
                 Nº Socio | Nombre de Socio | Apellido de Socio | Nº total de Reservas Mensuales -->
-                    <div class="col-md-4"> <?php echo $socio[0]?></div>
-                    <div class="col-md-4"> <?php echo $socio[1]?></div>
-                    <div class="col-md-4"> <?php echo $socio[2]?></div>  
+                    <div class="col-md-4 col-center"> <?php echo $socio[0]?></div>
+                    <div class="col-md-4 col-center"> <?php echo $socio[1]?></div>
+                    <div class="col-md-4 col-center"> <?php echo $socio[2]?></div>  
             </div>             
             <?php } ?>
             
