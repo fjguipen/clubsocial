@@ -40,11 +40,11 @@ class Usuario {
 
         $sqlResult = null;
 
-        if(DB::query($bydni)->num_rows == 0){
+        if(DB::query($bydni)->num_rows == 0) {
             $sqlResult = DB::query($sentencia);
         }
         
-        if(!$sqlResult){
+        if(!$sqlResult) {
             return false;
         }
 
